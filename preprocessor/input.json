@@ -1,0 +1,87 @@
+{
+  "routes": [
+    {
+      "name": "Брежани",
+	  "link": "http://mtb-bg.com/index.php/trails/gpstracks/3325-gpstrack-2015-brejani",
+      "length": 22.2,
+      "ascent": 850,
+      "difficulty": ["R1", "R2", "T3", "T4", "T5", "F", "X"],
+      "strenuousness": 6,
+      "duration": "2-3 часа с по-бързо темпо, 4-6 часа с по-бавно темпо и почивки",
+      "water": 2,
+      "food": "За половин или цял ден (предвид пътя дотам и обратно)",
+      "terrains": [
+        {"terrain": "асфалт", "length": 6.7},
+        {"terrain": "черни пътища", "length": 8.9},
+        {"terrain": "пътеки", "length": 6.6}
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_brejani.zip"]
+    },
+
+    {
+      "name": "Габровдол - Ерул - Габровдол (Пернишко)",
+	  "link": "http://mtb-bg.com/index.php/trails/gpstracks/3231-gpstrack-2015-gabrovdol-erul-gabrovdol",
+      "length": 74,
+      "ascent": 1030,
+      "difficulty": ["R1", "R2", "T3", "T4", "T5", "F", "X"],
+      "strenuousness": 9,
+      "duration": "5-8 часа",
+      "water": "1-2 л, чешма има в село Душинци, малко след село Пенкьовци, както и в село Еловдол",
+      "food": "в селата, през които се минава, няма работещи магазини, така че е нужно да се вземе сандвич или нещо дребно за хапване",
+      "terrains": "предимно стари асфалтови пътища + около 6 км черен път след село Ерул",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_gabrovdol-erul-gabrovdol.gpx"]
+    },
+
+    {
+      "name": "Бухово 2",
+	  "link": "http://mtb-bg.com/index.php/trails/gpstracks/3300-gpstrack-2015-buhovo-2",
+      "length": 11.1,
+      "ascent": 620,
+      "difficulty": ["R2", "T1", "T4"],
+      "strenuousness": 7,
+      "duration": "1-2 часа с нормално темпо, 3-4 часа с по-бавно темпо и почивки",
+      "water": 1.5,
+      "food": false,
+      "terrains": [
+        {"terrain": "черни пътища", "length": 7.8},
+        {"terrain": "пътеки", "length": 3.3}
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_buhovo-2.zip"]
+    },
+
+    {
+      "name": "Огняново - Скребатно",
+	  "link": "http://mtb-bg.com/index.php/trails/gpstracks/3218-gpstrack-2015-ognqnovo-skrebatno",
+      "length": 22.7,
+      "ascent": 720,
+      "difficulty": ["R1", "R2"],
+      "strenuousness": 5,
+      "duration": "2 часа с по-бързо темпо, 3-5 часа с по-бавно темпо и почивки",
+      "water": "1-2 л, в с. Скребатно има чешма",
+      "food": "По ваша преценка, за половин ден",
+      "terrains": [
+        {"terrain": "асфалт", "length": 14.1},
+        {"terrain": "черни пътища", "length": 8.6}
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_ognqnovo-skrebatno.zip"]
+    },
+	
+    {
+      "name": "Локорско - Елешница - Бакьово - Ябланица - Локорско",
+	  "link": "http://mtb-bg.com/index.php/trails/gpstracks/3116-gpstrack-2014-lokorsko-eleshnitsa-bakiovo-yablanitsa-lokorsko",
+      "length": 60.3,
+      "ascent": 1900,
+      "difficulty": ["R1", "R2", "T4"],
+      "strenuousness": 9,
+      "duration": "4-6 часа с по-бързо темпо, 6-12 часа с по-бавно темпо и повече почивки. ",
+      "water": "2-3 л, има една скрита чешма след Бакьово, както и една в центъра на с. Ябланица",
+      "food": "За цял ден.",
+      "terrains": [
+        {"terrain": "асфалт", "length": 14},
+        {"terrain": "черни пътища", "length": 36.9},
+        {"terrain": "пътеки", "length": 9.4}
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_lokorsko-eleshnitsa-bakiovo-yablanitsa-lokorsko.zip"]
+    }
+  ]
+}

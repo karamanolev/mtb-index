@@ -1,0 +1,175 @@
+<html>
+<head>
+    <title>Карта маршрути</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="lib/jquery-2.1.3.min.js"></script>
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <script src="lib/polyline.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <link rel="stylesheet" href="lib/MarkerCluster.css"/>
+    <link rel="stylesheet" href="lib/MarkerCluster.Default.css"/>
+    <script src="lib/leaflet.markercluster.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100%;
+            height: 800px;
+            margin: 0;
+        }
+
+        #route_browser {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <div id="map"></div>
+        </div>
+        <div class="col-md-3" id="route_browser">
+            <h2 class="route-name">Име на маршрута</h2>
+            <h3>дължина <div style="float: right;"><strong class="route-length">13.6</strong> <strong>km</strong></div></h3>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function initMap(state) {
+        var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 18, attribution: osmAttrib});
+        state.map = L.map('map').setView([42.7, 25.3], 7);
+        state.map.addLayer(osm);
+    }
+
+    function initMarkers(state) {
+        state.markersLayer = new L.MarkerClusterGroup({
+            zoomToBoundsOnClick: false
+        });
+        state.markersLayer.on('mouseover', function (a) {
+            state.routeOver(a.layer.route);
+        }).on('clusterclick', function (a) {
+            a.layer.spiderfy();
+        }).on('mouseout', function (a) {
+            state.routeOut(a.layer.route);
+        }).on('animationend', function (a) {
+            state.updateTrackVisibility();
+        }).on('click', function (a) {
+            state.routeClicked(a.layer.route);
+        });
+        state.map.addLayer(state.markersLayer);
+    }
+
+    function initRouteTracks(state) {
+        state.tracksLayer = L.layerGroup();
+        state.updateTrackVisibility = function () {
+            $.each(state.routes, function (k, route) {
+                var visibleParent = state.markersLayer.getVisibleParent(route.markerLayer);
+                if (visibleParent == null || visibleParent == route.markerLayer) {
+                    if (!state.tracksLayer.hasLayer(route.tracksLayer)) {
+                        state.tracksLayer.addLayer(route.tracksLayer);
+                    }
+                } else {
+                    if (state.tracksLayer.hasLayer(route.tracksLayer)) {
+                        state.tracksLayer.removeLayer(route.tracksLayer);
+                    }
+                }
+            });
+        };
+        state.map.addLayer(state.tracksLayer);
+        state.map.on('zoomend', function (e) {
+            if (state.map.getZoom() < 9) {
+                if (state.map.hasLayer(state.tracksLayer)) {
+                    state.map.removeLayer(state.tracksLayer);
+                }
+            } else {
+                if (!state.map.hasLayer(state.tracksLayer)) {
+                    state.map.addLayer(state.tracksLayer);
+                }
+            }
+        });
+    }
+
+    function initRoutes(state) {
+        state.routes = [];
+        state.routeOver = function (route) {
+            $.each(route.tracksLayer.getLayers(), function (i, trackLayer) {
+                trackLayer.setStyle({color: 'blue'});
+            });
+        };
+        state.routeOut = function (route) {
+            $.each(route.tracksLayer.getLayers(), function (i, trackLayer) {
+                trackLayer.setStyle({color: 'red'});
+            });
+        };
+        state.routeClicked = function (route) {
+            route.markerLayer.openPopup();
+        };
+        state.addRoute = function (route) {
+            state.routes.push(route);
+            route.tracksLayer = L.layerGroup();
+            var firstPoint = null;
+            $.each(route.polylines, function (i, poly) {
+                var points = polyline.decode(poly);
+                firstPoint = firstPoint ? firstPoint : points[0];
+                var layer = L.polyline(points, {color: 'red'});
+                layer.route = route;
+                layer.on('mouseover', function () {
+                    state.routeOver(route);
+                }).on('mouseout', function () {
+                    state.routeOut(route);
+                }).on('click', function () {
+                    state.routeClicked(route);
+                });
+                route.tracksLayer.addLayer(layer);
+            });
+            route.markerLayer = L.marker(firstPoint);
+            route.markerLayer.on('popupopen', function () {
+                state.showRoute(route);
+            });
+            route.markerLayer.route = route;
+            route.markerLayer.bindPopup(route['name']);
+            state.markersLayer.addLayer(route.markerLayer);
+        };
+    }
+
+    function initRouteBrowser(state) {
+        state.showRoute = function (route) {
+            $('#route_browser').fadeIn();
+            $('#route_browser .route-name').text(route.name);
+            $('#route_browser .route-length').text(route.length);
+        };
+    }
+
+    function loadRoutes(state) {
+        $.get('routes.json', function (data) {
+            $.each(data['routes'], function (k, route) {
+                state.addRoute(route);
+            });
+        });
+    }
+
+    $(function () {
+        var state = {};
+
+        initMap(state);
+        initMarkers(state);
+        initRouteTracks(state);
+        initRoutes(state);
+        initRouteBrowser(state);
+
+        loadRoutes(state);
+    });
+</script>
+</body>
