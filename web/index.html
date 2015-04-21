@@ -208,7 +208,9 @@
                 }).on('mouseout', function () {
                     state.routeOut(route);
                 }).on('click', function () {
-                    state.routeClicked(route);
+                    setTimeout(function() {
+                        state.routeClicked(route);
+                    }, 5);
                 });
                 route.tracksLayer.addLayer(layer);
             });
@@ -286,6 +288,7 @@
             $('#route_browser .mtb-link').attr('href', route.link);
         };
         state.hideRoute = function (route) {
+            debugger;
             fadingOut = setTimeout(function () {
                 $('#route_browser').fadeOut();
                 fadingOut = null;
