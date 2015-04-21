@@ -173,6 +173,19 @@
       "water": "1 л, на няколко места по пътя има чешми",
       "food": "за половин ден",
       "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_chepelare-rojen.zip"]
+    },
+
+    {
+      "name": "Фалковец - Чупрене - хижа \"Горски рай\" - Репляна",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2790-gpstrack-2014-falkovets-chuprene-gorski-rai-replqna",
+      "length": 59.4,
+      "ascent": 1180,
+      "difficulty": ["R1", "R2"],
+      "strenuousness": 8,
+      "duration": "4-5 часа с по-бързо темпо; 6-10 часа с по-бавно темпо и почивки",
+      "water": "1.5 л, на няколко места по пътя нагоре има чешми",
+      "food": "За цял ден, в хижа \"Горски рай\" има храна",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_falkovets-chuprene-gorski-rai-replqna.zip"]
     }
   ]
 }
