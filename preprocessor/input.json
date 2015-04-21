@@ -65,7 +65,7 @@
       ],
       "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_ognqnovo-skrebatno.zip"]
     },
-	
+
     {
       "name": "Локорско - Елешница - Бакьово - Ябланица - Локорско",
 	  "link": "http://mtb-bg.com/index.php/trails/gpstracks/3116-gpstrack-2014-lokorsko-eleshnitsa-bakiovo-yablanitsa-lokorsko",
@@ -134,6 +134,45 @@
       "water": "2 л, в Огоя трябва да има чешма, но след това не видях никъде",
       "food": "За половин ден или цял ден в зависимост от темпото",
       "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_bakyovo-ogoya.zip"]
+    },
+
+    {
+      "name": "Широка поляна",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2934-gpstrack-2014-shiroka-polqna",
+      "length": 16.7,
+      "ascent": 200,
+      "difficulty": ["R1", "R2"],
+      "strenuousness": 3,
+      "duration": "1 час с по-бързо темпо, 2-3 часа с по-бавно темпо и почивки",
+      "water": 0.5,
+      "food": false,
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_shiroka-polqna.zip"]
+    },
+
+    {
+      "name": "Маркирани ХС маршрути в ПП Витоша - Кладница",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2731-gpstrack-2014-vitosha-routes-kladnitsa",
+      "length": 33.3,
+      "ascent": 820,
+      "difficulty": ["R1", "R2", "R3", "T3"],
+      "strenuousness": 6,
+      "duration": "2-3 часа с по-бързо темпо, 4-7 часа с по-бавно темпо и почивки",
+      "water": "1-2 л, по маршрута има чешми на няколко места",
+      "food": "За цял ден",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_4_kladnitsa.zip"]
+    },
+
+    {
+      "name": "Чепеларе - Рожен",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2928-gpstrack-2014-chepelare-rojen",
+      "length": 23.3,
+      "ascent": 720,
+      "difficulty": ["R1", "R2", "T3"],
+      "strenuousness": 5,
+      "duration": "2-3 часа с по-бързо темпо, 3-5 часа с по-бавно темпо и почивки",
+      "water": "1 л, на няколко места по пътя има чешми",
+      "food": "за половин ден",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_chepelare-rojen.zip"]
     }
   ]
 }
