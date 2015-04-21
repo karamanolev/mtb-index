@@ -88,6 +88,10 @@
                     </div>
                 </h4>
                 <h4>натоварване</h4>
+
+                <div class="progress">
+                    <div class="route-strenuousness progress-bar" role="progressbar" style="width: 40%"></div>
+                </div>
                 <h4>продължителност
                     <div class="info-right">
                         <strong class="route-duration">2-3 часа с по-бързо темпо, 40-60 часа с по-бавно темпо и
@@ -118,7 +122,8 @@
 <script type="text/javascript">
     function initMap(state) {
         var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors | ' +
+                'Implemented by <a href="http://karamanolev.com/">Ivailo Karamanolev</a>';
         var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 18, attribution: osmAttrib});
         state.map = L.map('map').setView([42.7, 25.3], 7);
         state.map.addLayer(osm);
@@ -246,6 +251,19 @@
                 $('#route_browser .route-food').text(route.food);
             }
 
+            var strenuousnessBar = $('#route_browser .route-strenuousness');
+            strenuousnessBar.removeClass('progress-bar-success progress-bar-warning progress-bar-danger');
+            if (route.strenuousness <= 4) {
+                strenuousnessBar.addClass('progress-bar-success');
+            } else if (route.strenuousness <= 7) {
+                strenuousnessBar.addClass('progress-bar-warning');
+            } else {
+                strenuousnessBar.addClass('progress-bar-danger');
+            }
+            strenuousnessBar.css({
+                width: (Math.max(1, Math.min(10, route.strenuousness)) * 10) + '%'
+            });
+
             var terrains = $('#route_browser .route-terrains');
             terrains.empty();
             if (route.terrains === undefined) {
@@ -294,10 +312,17 @@
     });
 </script>
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-62126669-1', 'auto');
     ga('send', 'pageview');
