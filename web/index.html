@@ -1,6 +1,7 @@
 <html>
 <head>
-    <title>����� ��������</title>
+    <title>Карта маршрути</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="lib/jquery-2.1.3.min.js"></script>
@@ -19,15 +20,24 @@
         body {
             margin: 0;
             padding: 0;
+            background: url(nice_snow.png);
+        }
+
+        .row {
+            background: white;
+        }
+
+        .col-sm-9 {
+            padding-left: 0;
         }
 
         #map {
             width: 100%;
-            height: 800px;
+            height: 100vh;
             margin: 0;
         }
 
-        #route_browserr {
+        #route_browser {
             display: none;
         }
 
@@ -42,69 +52,73 @@
             text-align: right;
         }
 
-        .route-duration {
-            display: inline-block;
-        }
-
         .route-terrains {
             list-style: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-sm-9">
             <div id="map"></div>
         </div>
-        <div class="col-md-3" id="route_browser">
-            <h2><a class="route-name" href="">��� �� ��������</a></h2>
-            <h4>�������
-                <div class="info-right">
-                    <strong class="route-length">13.6</strong> <strong>km</strong>
-                </div>
-            </h4>
-            <h4>���������
-                <div class="info-right">
-                    <strong class="route-ascent">800</strong> <strong>m</strong>
-                </div>
-            </h4>
-            <h4>����. ��������
-                <div class="info-right">
-                    <strong class="route-difficulty">R1, R2, T3</strong>
-                </div>
-            </h4>
-            <h4>�����������</h4>
-            <h4>���������������
-                <div class="info-right">
-                    <strong class="route-duration">2-3 ���� � ��-����� �����, 40-60 ���� � ��-����� ����� �
-                        �������</strong>
-                </div>
-            </h4>
-            <h4>����
-                <div class="info-right">
-                    <strong class="route-water">2 �����</strong>
-                </div>
-            </h4>
-            <h4>�����
-                <div class="info-right">
-                    <strong class="route-food">�� ������� ���</strong>
-                </div>
-            </h4>
-            <h4>�����
-                <div class="info-right">
-                    <ul class="route-terrains"></ul>
-                </div>
-            </h4>
-            <a class="mtb-link btn btn-block btn-lg btn-primary" style="clear: both;"
-               href="" target="_blank">��� � mtb-bg</a>
+        <div class="col-sm-3 sidebar">
+            <div id="help_text">
+                <h3>Тук можете да разгледате маршрутите от GPS следи в mtb-bg.com.</h3>
+                Ако увеличите картата, ще можете да видите и самите следи. Ако кликнете
+                на някой от маршрутите, тук ще се отвори повече информация за него.
+            </div>
+            <div id="route_browser">
+                <h2><a class="route-name" href="">Име на маршрута</a></h2>
+                <h4>дължина
+                    <div class="info-right">
+                        <strong class="route-length">13.6</strong> <strong>km</strong>
+                    </div>
+                </h4>
+                <h4>изкачване
+                    <div class="info-right">
+                        <strong class="route-ascent">800</strong> <strong>m</strong>
+                    </div>
+                </h4>
+                <h4>техн. трудност
+                    <div class="info-right">
+                        <strong class="route-difficulty">R1, R2, T3</strong>
+                    </div>
+                </h4>
+                <h4>натоварване</h4>
+                <h4>продължителност
+                    <div class="info-right">
+                        <strong class="route-duration">2-3 часа с по-бързо темпо, 40-60 часа с по-бавно темпо и
+                            почивки</strong>
+                    </div>
+                </h4>
+                <h4>вода
+                    <div class="info-right">
+                        <strong class="route-water">2 литра</strong>
+                    </div>
+                </h4>
+                <h4>храна
+                    <div class="info-right">
+                        <strong class="route-food">за половин ден</strong>
+                    </div>
+                </h4>
+                <h4>терен
+                    <div class="info-right">
+                        <ul class="route-terrains"></ul>
+                    </div>
+                </h4>
+                <a class="mtb-link btn btn-block btn-lg btn-primary" style="clear: both;"
+                   href="" target="_blank">Виж в mtb-bg</a>
+            </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
     function initMap(state) {
         var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        var osmAttrib = 'Map data � <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
         var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 18, attribution: osmAttrib});
         state.map = L.map('map').setView([42.7, 25.3], 7);
         state.map.addLayer(osm);
@@ -204,7 +218,12 @@
     }
 
     function initRouteBrowser(state) {
+        var fadingOut = null;
         state.showRoute = function (route) {
+            $('#help_text').hide();
+            if (fadingOut !== null) {
+                clearTimeout(fadingOut);
+            }
             $('#route_browser').fadeIn();
             $('#route_browser .route-name').text(route.name)
                     .attr('href', route.link);
@@ -213,25 +232,44 @@
             $('#route_browser .route-duration').text(route.duration);
             var water;
             if (typeof(route.water) == 'number') {
-                water = route.water + ' �����';
+                water = route.water + ' литра';
+            } else if (typeof(route.water) == 'boolean' && !route.water) {
+                water = 'Не е необходима';
             } else {
                 water = route.water;
             }
             $('#route_browser .route-water').text(water);
-            $('#route_browser .route-food').text(route.food);
+
+            if (typeof(route.food) == 'boolean' && !route.food) {
+                $('#route_browser .route-food').text('не е необходима');
+            } else {
+                $('#route_browser .route-food').text(route.food);
+            }
 
             var terrains = $('#route_browser .route-terrains');
             terrains.empty();
-            $.each(route.terrains, function (i, terrain) {
-                terrains.append($('<li>').text(terrain.terrain + ' - ' + terrain.length + ' km'));
-            });
+            if (route.terrains === undefined) {
+                terrains.parent().parent().hide();
+            } else {
+                terrains.parent().parent().show();
+            }
+            if (typeof(route.terrains) == 'string') {
+                terrains.text(route.terrains);
+            } else {
+                $.each(route.terrains, function (i, terrain) {
+                    terrains.append($('<li>').text(terrain.terrain + ' - ' + terrain.length + ' km'));
+                });
+            }
 
             $('#route_browser .route-traces').text(route.traces);
 
             $('#route_browser .mtb-link').attr('href', route.link);
         };
         state.hideRoute = function (route) {
-            $('#route_browser').fadeOut();
+            fadingOut = setTimeout(function () {
+                $('#route_browser').fadeOut();
+                fadingOut = null;
+            }, 500);
         }
     }
 
@@ -254,5 +292,15 @@
 
         loadRoutes(state);
     });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-62126669-1', 'auto');
+    ga('send', 'pageview');
+
 </script>
 </body>

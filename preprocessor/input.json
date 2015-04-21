@@ -82,6 +82,45 @@
         {"terrain": "пътеки", "length": 9.4}
       ],
       "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_lokorsko-eleshnitsa-bakiovo-yablanitsa-lokorsko.zip"]
+    },
+
+    {
+      "name": "Маркирани ХС маршрути в ПП Витоша - Ярлово",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3095-gpstrack-2014-vitosha-routes-yarlovo",
+      "length": 18.3,
+      "ascent": 440,
+      "difficulty": ["R1", "R2"],
+      "strenuousness": 4,
+      "duration": "1-2 часа с по-бързо темпо, 3-5 часа при бавно каране и дълги почивки",
+      "water": "1-2 л, по маршрута има една чешма в първата 1/3 от маршрута, но не гарантирам, че работи",
+      "food": "За половин ден, но само при каране с по-бавно темпо",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_7_yarlovo.zip"]
+    },
+
+    {
+      "name": "Маркирани ХС маршрути в ПП Витоша - Чуйпетльово 2",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3094-gpstrack-2014-vitosha-routes-chuipetliovo-2",
+      "length": 9.82,
+      "ascent": 280,
+      "difficulty": ["R2", "T3"],
+      "strenuousness": 4,
+      "duration": "1-2 часа, не повече от 3 часа при бавно каране и дълги почивки",
+      "water": " 1-1.5 л, по маршрута няма чешми",
+      "food": "Не е необходима, освен ако не държите да похапнете на тиферич на някоя поляна или при заслона.",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_6_chuipetliovo2.zip"]
+    },
+
+    {
+      "name": "Маркирани ХС маршрути в ПП Витоша - Чуйпетльово 1",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3093-gpstrack-2014-vitosha-routes-chuipetliovo-1",
+      "length": 9.63,
+      "ascent": 370,
+      "difficulty": ["R1", "R2"],
+      "strenuousness": 4,
+      "duration": "1-2 часа, не повече от 3 часа при бавно каране и дълги почивки",
+      "water": " 1-1.5 л, по маршрута няма чешми",
+      "food": "Не е необходима, освен ако не държите да похапнете на тиферич на някоя поляна или при заслона.",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_6_chuipetliovo2.zip"]
     }
   ]
 }
