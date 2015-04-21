@@ -9,6 +9,9 @@ import requests
 from shapely.geometry.linestring import LineString
 
 
+exec_root = os.path.dirname(__file__)
+
+
 def read_json(path):
     with open(path, 'r') as f:
         return json.loads(f.read())
@@ -45,7 +48,7 @@ def extract_gpxes(cache_path):
 
 
 def get_gpxes(trace_url):
-    cache_path = os.path.join('cache', os.path.basename(trace_url))
+    cache_path = os.path.join(exec_root, 'cache', os.path.basename(trace_url))
     if not os.path.exists(cache_path):
         print 'Downloading', trace_url
         with open(cache_path, 'wb') as f:
@@ -80,10 +83,10 @@ def main():
     result = {
         'routes': []
     }
-    input_data = read_json('input.json')
+    input_data = read_json(os.path.join(exec_root, 'input.json'))
     for route in input_data['routes']:
         result['routes'].append(process_route(route))
-    write_json('../web/routes.json', result)
+    write_json(os.path.join(exec_root, '../web/routes.json'), result)
 
 
 if __name__ == '__main__':

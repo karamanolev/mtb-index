@@ -27,8 +27,27 @@
             margin: 0;
         }
 
-        #route_browser {
+        #route_browserr {
             display: none;
+        }
+
+        #route_browser h4:after {
+            content: " ";
+            display: block;
+            clear: both;
+        }
+
+        .info-right {
+            float: right;
+            text-align: right;
+        }
+
+        .route-duration {
+            display: inline-block;
+        }
+
+        .route-terrains {
+            list-style: none;
         }
     </style>
 </head>
@@ -39,8 +58,46 @@
             <div id="map"></div>
         </div>
         <div class="col-md-3" id="route_browser">
-            <h2 class="route-name">Име на маршрута</h2>
-            <h3>дължина <div style="float: right;"><strong class="route-length">13.6</strong> <strong>km</strong></div></h3>
+            <h2><a class="route-name" href="">Име на маршрута</a></h2>
+            <h4>дължина
+                <div class="info-right">
+                    <strong class="route-length">13.6</strong> <strong>km</strong>
+                </div>
+            </h4>
+            <h4>изкачване
+                <div class="info-right">
+                    <strong class="route-ascent">800</strong> <strong>m</strong>
+                </div>
+            </h4>
+            <h4>техн. трудност
+                <div class="info-right">
+                    <strong class="route-difficulty">R1, R2, T3</strong>
+                </div>
+            </h4>
+            <h4>натоварване</h4>
+            <h4>продължителност
+                <div class="info-right">
+                    <strong class="route-duration">2-3 часа с по-бързо темпо, 40-60 часа с по-бавно темпо и
+                        почивки</strong>
+                </div>
+            </h4>
+            <h4>вода
+                <div class="info-right">
+                    <strong class="route-water">2 литра</strong>
+                </div>
+            </h4>
+            <h4>храна
+                <div class="info-right">
+                    <strong class="route-food">за половин ден</strong>
+                </div>
+            </h4>
+            <h4>терен
+                <div class="info-right">
+                    <ul class="route-terrains"></ul>
+                </div>
+            </h4>
+            <a class="mtb-link btn btn-block btn-lg btn-primary" style="clear: both;"
+               href="" target="_blank">Виж в mtb-bg</a>
         </div>
     </div>
 </div>
@@ -137,6 +194,8 @@
             route.markerLayer = L.marker(firstPoint);
             route.markerLayer.on('popupopen', function () {
                 state.showRoute(route);
+            }).on('popupclose', function () {
+                state.hideRoute();
             });
             route.markerLayer.route = route;
             route.markerLayer.bindPopup(route['name']);
@@ -147,9 +206,33 @@
     function initRouteBrowser(state) {
         state.showRoute = function (route) {
             $('#route_browser').fadeIn();
-            $('#route_browser .route-name').text(route.name);
+            $('#route_browser .route-name').text(route.name)
+                    .attr('href', route.link);
             $('#route_browser .route-length').text(route.length);
+            $('#route_browser .route-difficulty').text(route.difficulty.join(", "));
+            $('#route_browser .route-duration').text(route.duration);
+            var water;
+            if (typeof(route.water) == 'number') {
+                water = route.water + ' литра';
+            } else {
+                water = route.water;
+            }
+            $('#route_browser .route-water').text(water);
+            $('#route_browser .route-food').text(route.food);
+
+            var terrains = $('#route_browser .route-terrains');
+            terrains.empty();
+            $.each(route.terrains, function (i, terrain) {
+                terrains.append($('<li>').text(terrain.terrain + ' - ' + terrain.length + ' km'));
+            });
+
+            $('#route_browser .route-traces').text(route.traces);
+
+            $('#route_browser .mtb-link').attr('href', route.link);
         };
+        state.hideRoute = function (route) {
+            $('#route_browser').fadeOut();
+        }
     }
 
     function loadRoutes(state) {
