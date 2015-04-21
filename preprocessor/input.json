@@ -121,6 +121,19 @@
       "water": " 1-1.5 л, по маршрута няма чешми",
       "food": "Не е необходима, освен ако не държите да похапнете на тиферич на някоя поляна или при заслона.",
       "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_5_chuipetliovo1.zip"]
+    },
+
+    {
+      "name": "Бакьово - Огоя",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3085-gpstrack-2014-bakyovo-ogoya",
+      "length": 32.7,
+      "ascent": 930,
+      "difficulty": ["R1", "R2", "T3"],
+      "strenuousness": 6,
+      "duration": "2-3 часа с по-бързо темпо, 5-6 часа с по-бавно темпо и/или почивки",
+      "water": "2 л, в Огоя трябва да има чешма, но след това не видях никъде",
+      "food": "За половин ден или цял ден в зависимост от темпото",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_bakyovo-ogoya.zip"]
     }
   ]
 }
