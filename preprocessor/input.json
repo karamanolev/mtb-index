@@ -259,6 +259,223 @@
       "water": "1.5 л, на няколко места по пътя нагоре има чешми",
       "food": "За цял ден, в хижа \"Горски рай\" има храна",
       "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_falkovets-chuprene-gorski-rai-replqna.zip"]
+    },
+    {
+      "name": "Полена - Коматинските скали",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2841-gpstrack-2014-polena-komatinski-skali",
+      "length": 33.2,
+      "ascent": 970,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3"
+      ],
+      "strenuousness": 6,
+      "duration": "2 л, в с. Сушица има чешма, по-нагоре по пътя преди Брестово има още една",
+      "water": "1.5 л, на няколко места по пътя нагоре има чешми",
+      "food": "За половин или цял ден според тмпото",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 16.8
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 14.4
+        },
+        {
+          "terrain": "пътеки",
+          "length": 2.0
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_polena-komatinski-skali.zip"]
+    },
+    {
+      "name": "Белоградчик - хижа \"Планиница\" - с. Фалковец (и обратно)",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2788-gpstrack-2014-belogradchik-planinitsa-falkovets",
+      "length": 28.7,
+      "ascent": 1050,
+      "difficulty": [
+        "R1",
+        "R2",
+        "R3",
+        "T3"
+      ],
+      "strenuousness": 7,
+      "duration": "5-8 часа с по-бавно темпо, почивки и разглеждане на забележителностите",
+      "water": "2 л, на 2-3 места има чешми",
+      "food": "За цял ден, но може да предвидите и обяд в хан \"Мадона\" (с.Фалковец)",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 10.8
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 11.1
+        },
+        {
+          "terrain": "пътеки",
+          "length": 6.8
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_belogradchik-planinitsa-falkovets.zip"]
+    },
+    {
+      "name": "Погановски манастир – вр.Изворска глава",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2791-gpstrack-2014-poganovski-manastir-izvorska-glava",
+      "length": 36,
+      "ascent": 900,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3",
+        "F"
+      ],
+      "strenuousness": 6,
+      "duration": "5-8 часа с по-бавно темпо, почивки и разглеждане на забележителностите",
+      "water": "При 6-ти километър - чешма, множество по–малки изворчета има и по втората част на пътя, но все пак поне литър и половина е хубаво да имате.",
+      "food": "Сандвич или някое енергийно барче. Не пропускайте и ресторанта, но плащайте в динари.",
+      "terrains": [
+        {
+          "terrain": "асфалт R1",
+          "length": 6.5
+        },
+        {
+          "terrain": "черни пътища R2",
+          "length": 26
+        },
+        {
+          "terrain": "пътеки T3",
+          "length": 3
+        },
+        {
+          "terrain": "F",
+          "length": 0.45
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_poganovski-manastir-izvorska-glava.zip"]
+    },
+    {
+      "name": "Маркирани ХС маршрути в ПП Витоша: Владая",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2729-gpstrack-2014-vitosha-routes-vladaya",
+      "length": 15.5,
+      "ascent": 450,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T2",
+        "T3"
+      ],
+      "strenuousness": 5,
+      "duration": "1-2 часа с по-бързо темпо, 3-4 часа с по-бавно темпо и почивки",
+      "water": "1,5-2 л, по маршрута няма чешми",
+      "food": "За половин ден",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_3_vladaya.zip"]
+    },
+    {
+      "name": "Четири пътеки над Варвара (Пътека 1, Т3)",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2730-gpstrack-2014-varvara-4-trails",
+      "length": 14.1,
+      "ascent": 800,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3"
+      ],
+      "strenuousness": 7,
+      "duration": "2,5 часа (с по-бързо темпо), 5 часа (с почивки и бавно темпо)",
+      "water": "1-1,5 л, по пътя няма вода",
+      "food": "За половин ден",
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 10
+        },
+        {
+          "terrain": "пътеки",
+          "length": 4
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_varvara-4-trails_p1.zip"]
+    },
+    {
+      "name": "Четири пътеки над Варвара (Пътека 2, Т4)",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2730-gpstrack-2014-varvara-4-trails",
+      "length": 7,
+      "ascent": 440,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T4"
+      ],
+      "strenuousness": 7,
+      "duration": "1 час (с по-бързо темпо), 2,5 часа (с почивки и бавно темпо)",
+      "water": "0,5 л, по пътя няма вода",
+      "food": false,
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 4.5
+        },
+        {
+          "terrain": "пътеки",
+          "length": 2.5
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_varvara-4-trails_p2.zip"]
+    },
+    {
+      "name": "Четири пътеки над Варвара (Пътека 3, Т3)",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2730-gpstrack-2014-varvara-4-trails",
+      "length": 5.5,
+      "ascent": 380,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3"
+      ],
+      "strenuousness": 7,
+      "duration": "1 час (с по-бързо темпо), 2 часа (с почивки и бавно темпо)",
+      "water": "0,5 л, по пътя няма вода",
+      "food": false,
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 3.8
+        },
+        {
+          "terrain": "пътеки",
+          "length": 1.7
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_varvara-4-trails_p3.zip"]
+    },
+    {
+      "name": "Четири пътеки над Варвара (Пътека 4, Т3)",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2730-gpstrack-2014-varvara-4-trails",
+      "length": 13.5,
+      "ascent": 850,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3"
+      ],
+      "strenuousness": 7,
+      "duration": "2,5 часа (с по-бързо темпо), 5 часа (с почивки и бавно темпо)",
+      "water": "1-1,5 л, по пътя няма вода",
+      "food": "за половин ден",
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 9.5
+        },
+        {
+          "terrain": "пътеки",
+          "length": 4
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_varvara-4-trails_p4.zip"]
     }
   ]
 }
