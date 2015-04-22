@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
     <script src="lib/polyline.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+    <script src="lib/Google.js"></script>
 
     <link rel="stylesheet" href="lib/MarkerCluster.css"/>
     <link rel="stylesheet" href="lib/MarkerCluster.Default.css"/>
@@ -70,7 +72,8 @@
                 Ако увеличите картата, ще можете да видите и самите следи. Ако кликнете
                 на някой от маршрутите, тук ще се отвори повече информация за него.
                 Маршрутите са групирани по регион (оранжеви кръгчета). За да видите
-                отделните маршрути, увеличете картата.
+                отделните маршрути, увеличете картата. От горният десен ъгъл на картата
+                можете да избирате различни изгледи - пътна карта, сателитни снимки, релеф.
             </div>
             <div id="route_browser">
                 <h2><a class="route-name" href="">Име на маршрута</a></h2>
@@ -129,6 +132,17 @@
         var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 18, attribution: osmAttrib});
         state.map = L.map('map').setView([42.7, 25.3], 7);
         state.map.addLayer(osm);
+
+        var googleSatellite = new L.Google('SATELLITE');
+        var googleTerrain = new L.Google('TERRAIN');
+
+        var baseMaps = {
+            'OpenStreetMap': osm,
+            'Сателитна': googleSatellite,
+            'Релефна': googleTerrain
+        };
+        var layerChooser = L.control.layers(baseMaps, []).addTo(state.map);
+        //state.map.addLayer(layerChooser);
     }
 
     function initMarkers(state) {
