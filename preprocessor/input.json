@@ -506,6 +506,272 @@
         }
       ],
       "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_melnik-karlanovo-sveti-iliq.zip"]
+    },
+    {
+      "name": "Белоградчик - Фалковец (обиколка на забележителностите)",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2719-gpstrack-2014-belogradchik-falkovets",
+      "length": 36.6,
+      "ascent": 700,
+      "difficulty": [
+        "R1",
+        "R2"
+      ],
+      "strenuousness": 6,
+      "duration": "4-8 часа с по-бавно темпо, почивки и разглеждане на забележителностите",
+      "water": "2 л, на 2-3 места има чешми",
+      "food": "За цял ден, освен ако няма да карате със състезателно темпо.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 19.5
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 17.1
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_belogradchik-falkovets.zip"]
+    },
+    {
+      "name": "Маркирани ХС маршрути в ПП Витоша - Бояна",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2705-gpstrack-2014-vitosha-routes-boyana",
+      "length": 11.4,
+      "ascent": 400,
+      "difficulty": [
+        "R1",
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "strenuousness": 5,
+      "duration": "1-2 часа с по-бързо темпо, 3-4 часа с по-бавно темпо и почивки",
+      "water": "1 л, по маршрута има чешми на няколко места",
+      "food": false,
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_2_boyana.zip"]
+    },
+    {
+      "name": "Маркирани ХС маршрути в ПП Витоша - Обиколка на Витоша",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2704-gpstrack-2014-vitosha-routes-obikolka",
+      "length": 87.9,
+      "ascent": 1500,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T1",
+        "T2",
+        "T3"
+      ],
+      "strenuousness": 10,
+      "duration": "5-6 часа с по-бързо темпо, 7-13 часа с по-бавно темпо и почивки",
+      "water": "2 л, в населените места има чешми, от северната страна на планината има такива и по пътеките",
+      "food": "За цял ден",
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_1_obikolka.zip"]
+    },
+    {
+      "name": "До Погановския манастир и обратно",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2687-gpstrack-2014-poganovski-manastir",
+      "length": 74,
+      "ascent": 1500,
+      "difficulty": [
+        "R1",
+        "R2"
+      ],
+      "strenuousness": 9,
+      "duration": "8 часа",
+      "water": "по пътя има чешми, 1.5 л би трябвало да стигнат",
+      "food": "някой и друг сандвич или в ресторанта срещу манастира",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 24
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 50
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_poganovski-manastir.zip"]
+    },
+    {
+      "name": "Кресна - Горна Брезница 2",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2611-gpstrack-2014-kresna-gorna-breznitsa-2",
+      "length": 34.1,
+      "ascent": 1400,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3",
+        "T4"
+      ],
+      "strenuousness": 7,
+      "duration": "3-4 часа с по-бързо темпо, 5-8 часа с по-бавно темпо и почивки",
+      "water": "2-3 л, в Горна Брезница има чешми",
+      "food": "За цял ден",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 5.8
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 23.1
+        },
+        {
+          "terrain": "пътеки",
+          "length": 5.2
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_kresna-gorna-breznitsa-2.zip"]
+    },
+    {
+      "name": "Кресна - Горна Брезница 1",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2612-gpstrack-2014-kresna-gorna-breznitsa-1",
+      "length": 25.9,
+      "ascent": 1250,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "strenuousness": 7,
+      "duration": "2-3 часа с бързо темпо, 3-6 часа с по-бавно темпо и почивки",
+      "water": "2 л, в с. Горна Брезница има чешми",
+      "food": "За половин или цял ден според темпото.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 6
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 13.2
+        },
+        {
+          "terrain": "пътеки",
+          "length": 6.7
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_kresna-gorna-breznitsa-1.zip"]
+    },
+    {
+      "name": "Горна Брезница 2",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2614-gpstrack-2014-gorna-breznitsa-2",
+      "length": 16.3,
+      "ascent": 820,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "strenuousness": 7,
+      "duration": "1-4 часа (в зависимост от темпото)",
+      "water": "2 л",
+      "food": "За половин ден.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 1.1
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 10.8
+        },
+        {
+          "terrain": "пътеки",
+          "length": 4.4
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_gorna-breznitsa-2.zip"]
+    },
+    {
+      "name": "Батулия - Самотворската пътека",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2604-gpstrack-2014-batulia-samotvor",
+      "length": 12.1,
+      "ascent": 470,
+      "difficulty": [
+        "R2",
+        "T3",
+        "T4"
+      ],
+      "strenuousness": 5,
+      "duration": "1-3 часа (в зависимост от темпото)",
+      "water": "1 л",
+      "food": "За половин ден.",
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 10.7
+        },
+        {
+          "terrain": "пътеки",
+          "length": 1.4
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_batulia-samotvor.zip"]
+    },
+    {
+      "name": "Кресна - Влахи",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2597-gpstrack-2014-kresna-vlahi",
+      "length": 23.4,
+      "ascent": 630,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T2",
+        "T4",
+        "X"
+      ],
+      "strenuousness": 5,
+      "duration": "2-3 часа (с по-бързо темпо), 4-5 часа (с почивки и бавно темпо)",
+      "water": "2 л, в с. Влахи има чешма",
+      "food": "За половин ден.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 8.3
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 10.7
+        },
+        {
+          "terrain": "пътеки",
+          "length": 4.4
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_kresna-vlahi.zip"]
+    },
+    {
+      "name": "Волно-Баскалци - липсващото звено",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2570-gpstrack0047-volno-baskaltsi",
+      "length": 24.2,
+      "ascent": 900,
+      "difficulty": [
+        "R2",
+        "T3",
+        "T4",
+        "X"
+      ],
+      "strenuousness": 6,
+      "duration": "4-6 часа (с почивки и бавно темпо)",
+      "water": "2 л, между с. Зойчене и с. Баскалци няма чешми",
+      "food": "За половин или цял ден, според темпото.",
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 17.1
+        },
+        {
+          "terrain": "пътеки",
+          "length": 7.1
+        }
+      ],
+      "traces": ["http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0047_volno-baskaltsi.zip"]
     }
   ]
 }

@@ -86,6 +86,8 @@ def main():
     input_data = read_json(os.path.join(exec_root, 'input.json'))
     for route in input_data['routes']:
         result['routes'].append(process_route(route))
+    print 'Wrote {0} routes. {1} bytes per route.'.format(
+        len(result['routes']), len(json.dumps(result)) / len(result['routes']))
     write_json(os.path.join(exec_root, '../web/routes.json'), result)
 
 
