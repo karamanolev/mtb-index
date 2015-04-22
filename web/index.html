@@ -273,14 +273,14 @@
             if (route.terrains === undefined) {
                 terrains.parent().parent().hide();
             } else {
+                if (typeof(route.terrains) == 'string') {
+                    terrains.text(route.terrains);
+                } else {
+                    $.each(route.terrains, function (i, terrain) {
+                        terrains.append($('<li>').text(terrain.terrain + ' - ' + terrain.length + ' km'));
+                    });
+                }
                 terrains.parent().parent().show();
-            }
-            if (typeof(route.terrains) == 'string') {
-                terrains.text(route.terrains);
-            } else {
-                $.each(route.terrains, function (i, terrain) {
-                    terrains.append($('<li>').text(terrain.terrain + ' - ' + terrain.length + ' km'));
-                });
             }
 
             $('#route_browser .route-traces').text(route.traces);
