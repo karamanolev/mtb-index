@@ -1269,7 +1269,7 @@
           "length": 3.4
         }
       ],
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0017_Seslavci.gdb"]
+      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0017_Seslavci.gpx"]
     },
     {
       "name": "Сеславци 4",
@@ -1293,7 +1293,7 @@
           "length": 3.4
         }
       ],
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0019_Seslavci.gdb"]
+      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0019_Seslavci.gpx"]
     },
     {
       "name": "Бакьово - Ябланица",
@@ -1357,7 +1357,7 @@
           "length": 6.1
         }
       ],
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0021_Govedarci.gdb"]
+      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0021_Govedarci.gpx"]
     },
     {
       "name": "Кърнаре - Беклемето - Дерменка - Добрила - Сопот",
@@ -1367,7 +1367,7 @@
       "duration": "цял ден",
       "water": "за цял ден, препоръчително 2-3 л",
       "food": "за цял ден; може да се намери и по хижите",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0022_Gabrovo-Mazalat-Batoshevo.gdb"]
+      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0024.zip"]
     },
     {
       "name": "Петрич - Божкиното",
@@ -1387,14 +1387,14 @@
           "length": 1.6
         }
       ],
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0020_Bojkinoto.gdb"]
+      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0020_Bojkinoto.gpx"]
     },
     {
       "name": "Габрово - х. \"Партизанска песен\" (местност Узана) - х. \"Мазалат\" - с. Батошево",
       "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/1441-gpstrack0022-gabrovo-mazalat-batoshevo",
       "length": 69.0,
       "ascent": 1600.0,
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0022_Gabrovo-Mazalat-Batoshevo.gdb"]
+      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0022_Gabrovo-Mazalat-Batoshevo.gpx"]
     },
     {
       "name": "Горна Брезница",
@@ -1418,7 +1418,7 @@
           "length": 2.0
         }
       ],
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0018_GornaBreznica.gdb"]
+      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0018_GornaBreznica.gpx"]
     },
     {
       "name": "Редина",
@@ -1442,47 +1442,7 @@
           "length": 1.6
         }
       ],
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0016_Redina.gdb"]
-    },
-    {
-      "name": "Клисура - вр. Богдан - х. Чивира - х. Средногорец - Клисура",
-      "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/1884-gpstrack0030-klisura",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0030_Klisura-Bogdan-Srednogorec-Klisura.zip"]
-    },
-    {
-      "name": "Беласица 1.1",
-      "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/1741-belasitsa",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/Belasitsa_1.1.zip"]
-    },
-    {
-      "name": "Мелник 1.2",
-      "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/2196-melnik",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/Melnik_1.2.zip"]
-    },
-    {
-      "name": "Краище 1.0",
-      "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/2516-kraishte",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/Kraishte_1.zip"]
-    },
-    {
-      "name": "Говедарци 1.0",
-      "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/1789-govedarci",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/Govedartsi_1.zip"]
-    },
-    {
-      "name": "Голо Бърдо 1.0",
-      "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/1731-golo-bardo",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/Golo_bardo_1.zip"]
-    },
-    {
-      "name": "Сред горите и шубраците на Елин връх",
-      "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/2220-gpstrack0041-varvara-elin-vrah",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0041_Varvara-ElinVrah.zip"]
-    },
-    {
-      "name": "Старо Стефаново 1.0",
-      "link": "http://www.mtb-bg.com/index.php/trails/gpstracks/2498-stefanovo",
-      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/Stefanovo_1.zip"]
+      "traces": ["http://www.mtb-bg.com/images/stories/trails_GPStrack/gpstrack0016_Redina.gpx"]
     }
   ]
 }
