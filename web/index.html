@@ -8,11 +8,13 @@
 
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <link rel="stylesheet"
+          href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
     <script src="lib/polyline.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
     <script src="lib/Google.js"></script>
+    <script src="lib/jquery.scrollTo.min.js"></script>
 
     <link rel="stylesheet" href="lib/MarkerCluster.css"/>
     <link rel="stylesheet" href="lib/MarkerCluster.Default.css"/>
@@ -79,12 +81,14 @@
                 <h2><a class="route-name" href="">Име на маршрута</a></h2>
                 <h4>дължина
                     <div class="info-right">
-                        <strong class="route-length">13.6</strong> <strong>km</strong>
+                        <strong class="route-length">13.6</strong>
+                        <strong>km</strong>
                     </div>
                 </h4>
                 <h4>изкачване
                     <div class="info-right">
-                        <strong class="route-ascent">800</strong> <strong>m</strong>
+                        <strong class="route-ascent">800</strong>
+                        <strong>m</strong>
                     </div>
                 </h4>
                 <h4>техн. трудност
@@ -95,12 +99,14 @@
                 <h4>натоварване</h4>
 
                 <div class="progress">
-                    <div class="route-strenuousness progress-bar" role="progressbar" style="width: 40%"></div>
+                    <div class="route-strenuousness progress-bar" role="progressbar"
+                         style="width: 40%"></div>
                 </div>
                 <h4>продължителност
                     <div class="info-right">
-                        <strong class="route-duration">2-3 часа с по-бързо темпо, 40-60 часа с по-бавно темпо и
-                            почивки</strong>
+                        <strong class="route-duration">
+                            2-3 часа с по-бързо темпо, 40-60 часа с по-бавно темпо и почивки
+                        </strong>
                     </div>
                 </h4>
                 <h4>вода
@@ -118,8 +124,8 @@
                         <ul class="route-terrains"></ul>
                     </div>
                 </h4>
-                <a class="mtb-link btn btn-block btn-lg btn-primary" style="clear: both;"
-                   href="" target="_blank">Виж в mtb-bg</a>
+                <a class="mtb-link btn btn-block btn-lg btn-primary"
+                   style="clear: both;" href="" target="_blank">Виж в mtb-bg</a>
             </div>
         </div>
     </div>
@@ -129,7 +135,11 @@
         var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors | ' +
                 'Implemented by <a href="http://karamanolev.com/">Ivailo Karamanolev</a>';
-        var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 18, attribution: osmAttrib});
+        var osm = new L.TileLayer(osmUrl, {
+            minZoom: 2,
+            maxZoom: 18,
+            attribution: osmAttrib
+        });
         state.map = L.map('map').setView([42.7, 25.3], 7);
         state.map.addLayer(osm);
 
@@ -236,7 +246,7 @@
                 }).on('mouseout', function () {
                     state.routeOut(route);
                 }).on('click', function () {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         state.routeClicked(route);
                     }, 5);
                 });
@@ -261,7 +271,10 @@
             if (fadingOut !== null) {
                 clearTimeout(fadingOut);
             }
-            $('#route_browser').fadeIn();
+            $('#route_browser').fadeIn(100, function () {
+                $(window).scrollTo($('#route_browser'));
+                console.log('scroll to');
+            });
             $('#route_browser .route-name').text(route.name)
                     .attr('href', route.link);
             $('#route_browser .route-length').text(route.length);
@@ -317,7 +330,6 @@
             $('#route_browser .mtb-link').attr('href', route.link);
         };
         state.hideRoute = function (route) {
-            debugger;
             fadingOut = setTimeout(function () {
                 $('#route_browser').fadeOut();
                 fadingOut = null;
