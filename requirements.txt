@@ -1,3 +1,4 @@
-gpxpy==0.9.8
-polyline==1.1
-Shapely==1.5.7
+gpxpy>=0.9.8
+polyline>=1.1
+Shapely>=1.5.7
+beautifulsoup4>=4.3.2
