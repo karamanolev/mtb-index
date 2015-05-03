@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from decimal import Decimal
 import unittest
 
+from bs4 import BeautifulSoup
+
 import route_parser
 
 
@@ -10,6 +12,10 @@ class ParserTests(unittest.TestCase):
     def test_plaintext_parser(self):
         self.assertEqual(route_parser.plaintext_parser(None), None)
         self.assertEqual(route_parser.plaintext_parser('тест'), 'тест')
+
+    def test_unnecessary_false_parser(self):
+        self.assertEqual(route_parser.unnecessary_false_parser('1-2 литра'), '1-2 литра')
+        self.assertEqual(route_parser.unnecessary_false_parser('Не е необходима.'), False)
 
     def test_length_parser(self):
         self.assertEqual(route_parser.length_parser('км'), None)
@@ -21,6 +27,7 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(route_parser.length_parser('35.6км'), Decimal('35.6'))
 
     def test_ascent_parser(self):
+        self.assertEqual(route_parser.ascent_parser('няма нищо'), None)
         self.assertEqual(route_parser.ascent_parser('840'), Decimal('840'))
         self.assertEqual(route_parser.ascent_parser('840м'), Decimal('840'))
         self.assertEqual(route_parser.ascent_parser('840m'), Decimal('840'))
@@ -42,6 +49,71 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(route_parser.strenuousness_parser('КФН=13'), 13)
         self.assertEqual(route_parser.strenuousness_parser('Средно КФН=6'), 6)
 
+    def test_terrain_parser(self):
+        self.assertEqual(route_parser.terrain_parser('глупав терен'), None)
+        self.assertEqual(route_parser.terrain_parser(
+            '- асфалт - 13 км - черни пътища -~20 км'),
+            [{'terrain': 'асфалт', 'length': Decimal('13')},
+             {'terrain': 'черни пътища', 'length': Decimal('20')}]
+        )
 
-if __name__ == '__main__':
-    unittest.main()
+
+class MetaTests(unittest.TestCase):
+    def test_split_meta_strings(self):
+        self.assertEqual(route_parser.split_meta_strings(
+            ['Изходна точка: ', 'здравей', 'свят', 'денивелация : ', '13']),
+            {
+                'trailhead': 'здравей свят',
+                'ascent': '13',
+            }
+        )
+
+        if __name__ == '__main__':
+            unittest.main()
+
+    def test_parse_meta_parts(self):
+        self.assertEqual(route_parser.parse_meta_parts({
+            'trailhead': 'някаква стойност',
+            'ascent': '130 м',
+            'terrain': 'глупав терен',
+            'random_key': '42',
+        }), {
+            'trailhead': 'някаква стойност',
+            'ascent': Decimal('130'),
+        })
+
+    def test_find_metas(self):
+        soup = BeautifulSoup('<p><b>Изходна точка: </b>Перперикон <b>Дължина</b> 13km</p>')
+        self.assertEqual(
+            route_parser.find_metas(soup),
+            [{'trailhead': 'Перперикон', 'length': Decimal(13)}]
+        )
+
+    def test_find_trace_links(self):
+        soup = BeautifulSoup(
+            '<a href="test.bin">hello world</a>' +
+            '<a href="test.gpx">точки нарязани до 500 за стари гармини</a>' +
+            '<a href="test.gpx">GPX следа</a>')
+        self.assertEqual(route_parser.find_trace_links(soup), ['test.gpx'])
+
+
+    def test_parse_empty_page(self):
+        with self.assertRaises(Exception):
+            route_parser.parse_page('demo', '', False)
+
+
+    def test_find_name(self):
+        soup = BeautifulSoup(
+            'blah <a href="balsha-katina" class="contentpagetitle">' +
+            'Балша - Кътина</a> blah')
+        self.assertEqual(route_parser.find_name(soup), 'Балша - Кътина')
+
+    def test_parse_page(self):
+        content = (
+            '<p><b>Изходна точка: </b>Перперикон <b>Дължина</b> 13km</p>' +
+            '<a href="test.bin">hello world</a>' +
+            '<a href="test.gpx">точки нарязани до 500 за стари гармини</a>' +
+            '<a href="test.gpx">GPX следа</a>')
+        self.assertEqual(
+            route_parser.parse_page('demo', content, False),
+            {'trailhead': 'Перперикон', 'length': Decimal(13), 'link': 'test.gpx'})

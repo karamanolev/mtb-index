@@ -9,10 +9,12 @@ import re
 from bs4 import BeautifulSoup
 import requests
 
+from utils import parse_decimal
+
 
 def read_json(path):
     with open(path, 'r') as f:
-        return json.loads(f.read())
+        return json.loads(f.read(), parse_float=Decimal, parse_int=Decimal)
 
 
 def plaintext_parser(v):
@@ -23,14 +25,23 @@ def length_parser(v):
     match = re.match('^(?P<length>\d+([.,]\d+)?) ?(км|km)?$', v)
     if match is None:
         return None
-    return Decimal(match.group('length').replace(',', '.'))
+    return parse_decimal(match.group('length'))
+
+
+def unnecessary_false_parser(value):
+    s = re.sub('[^a-zа-я]', '', value.lower())
+    if s in ['неенеобходима']:
+        return False
+    return value
 
 
 def ascent_parser(v):
-    match = re.match('^(\((?P<direction>изкачване|спускане)\))? *[:–-]? *(?P<ascent>-?\d+([.,]\d+)?) ?(м|m)?$', v)
+    match = re.match(
+        '^(\((?P<direction>изкачване|спускане)\))? *[:–-]? *(?P<ascent>-?\d+([.,]\d+)?) ?(м|m)?$',
+        v)
     if match is None:
         return None
-    result = Decimal(match.group('ascent').replace(',', '.'))
+    result = parse_decimal(match.group('ascent'))
     direction = match.group('direction')
     if direction == 'спускане':
         result = -result
@@ -54,12 +65,18 @@ def difficulty_parser(v):
 def terrain_parser(v):
     v = v.lower().replace('т1', 't1').replace('т2', 't2').replace(
         'т3', 't3').replace('т4', 't4').replace('т5', 't5')
-    match = re.findall('(-|–)? ?(?P<terrain>(асфалт|черни пътища|пътеки) ' +
-                       '?(r1|r2|r3|t1|t2|t3|t4|t5|fx|f|x)?) ?' +
-                       '(-|–)? ?~? ?(?P<length>\d+([.,]?\d+) ?) ?(км|km)?', v)
-    if not match:
-        return None
-    return match
+    matches = re.finditer('(-|–)? ?(?P<terrain>(асфалт|черни пътища|пътеки)' +
+                          '( (r1|r2|r3|t1|t2|t3|t4|t5|fx|f|x))?) ?' +
+                          '(-|–)? ?~? ?(?P<length>\d+([.,]?\d+) ?)' +
+                          ' ?(км|km)?', v)
+    result = [
+        {
+            'terrain': m.group('terrain'),
+            'length': parse_decimal(m.group('length')),
+        }
+        for m in matches
+    ]
+    return result or None
 
 
 difficulty_parser.sort_order = ['R1', 'R2', 'R3', 'T1', 'T2', 'T3', 'T4', 'T5', 'F', 'X', 'FX']
@@ -81,8 +98,8 @@ parsers = {
     'length': length_parser,
     'ascent': ascent_parser,
     'duration': plaintext_parser,
-    'water': plaintext_parser,
-    'food': plaintext_parser,
+    'water': unnecessary_false_parser,
+    'food': unnecessary_false_parser,
     'terrain': terrain_parser,
     'difficulty': difficulty_parser,
     'strenuousness': strenuousness_parser,
@@ -118,16 +135,19 @@ def split_meta_strings(strings):
 
 def parse_meta_parts(meta_parts):
     parsed_meta = {}
+    warnings = []
     for k, v in meta_parts.items():
         if k in parsers:
             parsed_value = parsers[k](v)
             if parsed_value:
                 parsed_meta[k] = parsed_value
             else:
-                print('Parser for {0} failed on {1} returning {2}'.format(k, v, repr(parsed_value)))
+                warnings.append(
+                    'Parser for {0} failed on {1} returning {2}'.format(
+                        k, v, repr(parsed_value)))
         else:
-            print('Missing parser for {0}'.format(k))
-    return parsed_meta
+            warnings.append('Missing parser for {0}'.format(k))
+    return parsed_meta, warnings
 
 
 def find_metas(soup):
@@ -136,8 +156,8 @@ def find_metas(soup):
         strings = list(re.sub('[ ]+', ' ', t) for t in p.stripped_strings)
         if 'Изходна точка:' in strings or 'Дължина:' in strings or 'Продължителност:' in strings:
             meta_parts = split_meta_strings(strings)
-            parsed_meta = parse_meta_parts(meta_parts)
-            metas.append(parsed_meta)
+            parse_results = parse_meta_parts(meta_parts)
+            metas.append(parse_results)
     return metas
 
 
@@ -151,8 +171,18 @@ def find_trace_links(soup):
             continue
         if 'нарязани до 500' in a.text.lower():
             continue
-        links.append(href)
+        links.append('http://mtb-bg.com' + href)
     return links
+
+
+def find_name(soup):
+    result = None
+    for title in soup.find_all('a', attrs={'class': 'contentpagetitle'}):
+        if result is None:
+            result = title.get_text(strip=True)
+        else:
+            return None
+    return result
 
 
 def parse_page(url, content, ignore_errors):
@@ -160,19 +190,23 @@ def parse_page(url, content, ignore_errors):
         raise Exception('Empty HTML file!')
     # print('Parsing', url)
     soup = BeautifulSoup(content)
-    parsed_metas = find_metas(soup)
-    # print(parsed_metas)
+    parse_results = find_metas(soup)
     trace_links = find_trace_links(soup)
-    # print(trace_links)
-    if len(trace_links) != 1:
-        print('Error parsing {0}: {1} links found, must be exactly 1.'.format(url, len(trace_links)))
-        return None
-    if not ignore_errors and len(parsed_metas) != 1:
-        print('Error parsing {0}; {1} metadata blocks found, must be exactly 1'.format(
-            url, len(parsed_metas)))
-        return None
-    parsed_meta = parsed_metas[0] if len(parsed_metas) else None
-    return parsed_meta, trace_links[0]
+    parse_warnings = [result[1] for result in parse_results]
+    if len(trace_links) == 0:
+        parse_warnings.append(
+            'Error parsing {0}: no links.'.format(url, len(trace_links)))
+        return None, parse_warnings
+    if not ignore_errors and len(parse_results) != 1:
+        parse_warnings.append(
+            'Error parsing {0}; {1} metadata blocks found, must be exactly 1'.format(
+                url, len(parse_results)))
+        return None, parse_warnings
+    parsed_meta = parse_results[0][0] if len(parse_results) else None
+    parsed_meta['name'] = find_name(soup)
+    parsed_meta['link'] = url
+    parsed_meta['traces'] = trace_links
+    return parsed_meta, parse_warnings
 
 
 def read_routes():
@@ -180,9 +214,30 @@ def read_routes():
     return {r['link']: r for r in input_routes['routes']}
 
 
+def compare_routes(old_routes, new_routes):
+    old_links = set(old_routes.keys())
+    new_links = set(new_routes.keys())
+    for link in new_links - old_links:
+        print('New route', link)
+    for link in old_links - new_links:
+        print('Deleted route', link)
+    for link in old_links & new_links:
+        old_route = old_routes[link]
+        new_route = new_routes[link]
+        print('Matched route', link)
+        old_route_keys = set(old_route.keys())
+        new_route_keys = set(new_route.keys())
+        for key in old_route_keys | new_route_keys:
+            old_value = old_route.get(key)
+            new_value = new_route.get(key)
+            if old_value != new_value:
+                print(' - {0}: {1} != {2}'.format(key, old_value, new_value))
+
+
 def main():
     pages_ignore = {}
-    routes = read_routes()
+    online_routes = {}
+    saved_routes = read_routes()
     with open(os.path.join(exec_root, 'pages_exceptions.txt')) as f:
         for line in f:
             parts = line.decode('utf-8').strip().split(': ', 2)
@@ -195,7 +250,10 @@ def main():
                 continue
             url = u'http://mtb-bg.com' + rel_url.strip()
             content = download_page(url)
-            parse_page(url, content, exception == 'include')
+            route, warnings = parse_page(url, content, exception == 'include')
+            if route is not None:
+                online_routes[url] = route
+    compare_routes(saved_routes, online_routes)
 
 
 if __name__ == '__main__':
