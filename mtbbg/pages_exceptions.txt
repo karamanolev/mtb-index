@@ -1,0 +1,27 @@
+сборна следа: ignore: /index.php/trails/gpstracks/2220-gpstrack0041-varvara-elin-vrah
+сборна следа: ignore: /index.php/trails/gpstracks/1743-ograjden
+сборна следа: ignore: /index.php/trails/gpstracks/2610-maleshevska-kresna-gorna-breznitsa
+сборна следа: ignore: /index.php/trails/gpstracks/2516-kraishte
+сборна следа: ignore: /index.php/trails/gpstracks/2598-maleshevska-krupnik
+сборна следа: ignore: /index.php/trails/gpstracks/2196-melnik
+сборна следа: ignore: /index.php/trails/gpstracks/1741-belasitsa
+няма описание: include: /index.php/trails/gpstracks/2519-gpstrack0046-tashmandra-sapareva-banq
+сборна следа: ignore: /index.php/trails/gpstracks/2498-stefanovo
+няма описание: include: /index.php/trails/gpstracks/1027-gpstrack0007-karlukovo
+няма описание: include: /index.php/trails/gpstracks/1025-gpstrack0005-karlukovo
+сборна следа, описана ръчно: ignore: /index.php/trails/gpstracks/2730-gpstrack-2014-varvara-4-trails
+няма описание: include: /index.php/trails/gpstracks/1023-gpstrack0003
+няма описание: include: /index.php/trails/gpstracks/1021-gpstrack0001-atoluka-peshtera
+сборна следа: ignore: /index.php/trails/gpstracks/1731-golo-bardo
+няма описание: include: /index.php/trails/gpstracks/1884-gpstrack0030-klisura
+няма описание: include: /index.php/trails/gpstracks/1026-gpstrack0006-rodopi
+няма описание: include: /index.php/trails/gpstracks/1022-gpstrack0002
+сборна следа: ignore: /index.php/trails/gpstracks/1789-govedarci
+няма описание: include: /index.php/trails/gpstracks/1024-gpstrack0004-drenovo
+сборна следа: ignore: /index.php/trails/gpstracks/1539-gpstrack0026-ogoya
+сборна следа, но е ОК, има един основен вариант: include: /index.php/trails/gpstracks/1217-gpstrack0014
+сборна следа, но е ОК, има два варианта: include: /index.php/trails/gpstracks/1230-gpstrack0015-lokorsko-voinegovci
+няма описание: include: /index.php/trails/gpstracks/1029-gpstrack0009-sofiiska-planina
+няма описание: include: /index.php/trails/gpstracks/1028-gpstrack0008-seslavci
+сборна следа, но е ОК - има една голяма обиколка с малки разглонения: include: /index.php/trails/gpstracks/2701-gpstrack-2014-vitosha-routes-all
+това всъщност е системата за описание на маршрути: ignore: /index.php/trails/gpstracks/1730-rating-trails-routes
