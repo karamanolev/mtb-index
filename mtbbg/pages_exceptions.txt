@@ -25,3 +25,4 @@
 няма описание: include: /index.php/trails/gpstracks/1028-gpstrack0008-seslavci
 сборна следа, но е ОК - има една голяма обиколка с малки разглонения: include: /index.php/trails/gpstracks/2701-gpstrack-2014-vitosha-routes-all
 това всъщност е системата за описание на маршрути: ignore: /index.php/trails/gpstracks/1730-rating-trails-routes
+нестандартно форматиране: ignore: /index.php/trails/gpstracks/3231-gpstrack-2015-gabrovdol-erul-gabrovdol

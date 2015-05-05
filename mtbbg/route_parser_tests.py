@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 from decimal import Decimal
 import unittest
-
 from bs4 import BeautifulSoup
 
 import route_parser
@@ -25,6 +24,8 @@ class ParserTests(unittest.TestCase):
         self.assertEqual(route_parser.length_parser('35.6 км'), Decimal('35.6'))
         self.assertEqual(route_parser.length_parser('35,6 км'), Decimal('35.6'))
         self.assertEqual(route_parser.length_parser('35.6км'), Decimal('35.6'))
+        self.assertEqual(route_parser.length_parser(
+            '43.4 км / 48.3 км с допълнителна обиколка около вр. Свети Илия'), Decimal('43.4'))
 
     def test_ascent_parser(self):
         self.assertEqual(route_parser.ascent_parser('няма нищо'), None)
@@ -57,6 +58,18 @@ class ParserTests(unittest.TestCase):
              {'terrain': 'черни пътища', 'length': Decimal('20')}]
         )
 
+    def test_water_parser(self):
+        self.assertEqual(route_parser.water_parser('не е необходима'), False)
+        self.assertEqual(route_parser.water_parser('3'), Decimal('3'))
+        self.assertEqual(route_parser.water_parser('3.3'), Decimal('3.3'))
+        self.assertEqual(route_parser.water_parser('3,3'), Decimal('3.3'))
+        self.assertEqual(route_parser.water_parser('3.3 л'), Decimal('3.3'))
+        self.assertEqual(route_parser.water_parser('3.3 л.'), Decimal('3.3'))
+        self.assertEqual(route_parser.water_parser('3.3 литра'), Decimal('3.3'))
+        self.assertEqual(route_parser.water_parser('3.3 литра.'), Decimal('3.3'))
+        self.assertEqual(route_parser.water_parser('3.3 литра., в селото има'),
+                         '3.3 литра., в селото има')
+
 
 class MetaTests(unittest.TestCase):
     def test_split_meta_strings(self):
@@ -72,29 +85,31 @@ class MetaTests(unittest.TestCase):
             unittest.main()
 
     def test_parse_meta_parts(self):
-        self.assertEqual(route_parser.parse_meta_parts({
+        parse_results = route_parser.parse_meta_parts({
             'trailhead': 'някаква стойност',
             'ascent': '130 м',
-            'terrain': 'глупав терен',
+            'terrains': 'глупав терен',
             'random_key': '42',
-        }), {
+        })
+        self.assertEqual(parse_results[0], {
             'trailhead': 'някаква стойност',
             'ascent': Decimal('130'),
         })
+        self.assertEqual(len(parse_results[1]), 2)
 
     def test_find_metas(self):
         soup = BeautifulSoup('<p><b>Изходна точка: </b>Перперикон <b>Дължина</b> 13km</p>')
         self.assertEqual(
             route_parser.find_metas(soup),
-            [{'trailhead': 'Перперикон', 'length': Decimal(13)}]
+            [({'trailhead': 'Перперикон', 'length': Decimal(13)}, [])]
         )
 
     def test_find_trace_links(self):
         soup = BeautifulSoup(
-            '<a href="test.bin">hello world</a>' +
-            '<a href="test.gpx">точки нарязани до 500 за стари гармини</a>' +
-            '<a href="test.gpx">GPX следа</a>')
-        self.assertEqual(route_parser.find_trace_links(soup), ['test.gpx'])
+            '<a href="/test.bin">hello world</a>' +
+            '<a href="/test.gpx">точки нарязани до 500 за стари гармини</a>' +
+            '<a href="/test.gpx">GPX следа</a>')
+        self.assertEqual(route_parser.find_trace_links(soup), ['http://mtb-bg.com/test.gpx'])
 
 
     def test_parse_empty_page(self):
@@ -110,10 +125,16 @@ class MetaTests(unittest.TestCase):
 
     def test_parse_page(self):
         content = (
+            '<a class="contentpagetitle"> Заглавие </a>' +
             '<p><b>Изходна точка: </b>Перперикон <b>Дължина</b> 13km</p>' +
-            '<a href="test.bin">hello world</a>' +
-            '<a href="test.gpx">точки нарязани до 500 за стари гармини</a>' +
-            '<a href="test.gpx">GPX следа</a>')
-        self.assertEqual(
-            route_parser.parse_page('demo', content, False),
-            {'trailhead': 'Перперикон', 'length': Decimal(13), 'link': 'test.gpx'})
+            '<a href="/test.bin">hello world</a>' +
+            '<a href="/test.gpx">точки нарязани до 500 за стари гармини</a>' +
+            '<a href="/test.gpx">GPX следа</a>')
+        parse_results = route_parser.parse_page('demo', content, False)
+        self.assertEqual(parse_results[0], {
+            'name': 'Заглавие',
+            'trailhead': 'Перперикон',
+            'length': Decimal(13),
+            'link': 'demo',
+            'traces': ['http://mtb-bg.com/test.gpx']
+        })

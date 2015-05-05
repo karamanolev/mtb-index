@@ -1,20 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function
 from collections import defaultdict
-from decimal import Decimal
-import json
+import copy
+import locale
 import os
+from pytz import timezone
 import re
-
 from bs4 import BeautifulSoup
 import requests
+from datetime import datetime
 
-from utils import parse_decimal
-
-
-def read_json(path):
-    with open(path, 'r') as f:
-        return json.loads(f.read(), parse_float=Decimal, parse_int=Decimal)
+from utils import parse_decimal, ParseResultFix, write_json, read_json
 
 
 def plaintext_parser(v):
@@ -22,6 +18,8 @@ def plaintext_parser(v):
 
 
 def length_parser(v):
+    if '/' in v:
+        v = v.split('/')[0].strip()
     match = re.match('^(?P<length>\d+([.,]\d+)?) ?(км|km)?$', v)
     if match is None:
         return None
@@ -30,9 +28,18 @@ def length_parser(v):
 
 def unnecessary_false_parser(value):
     s = re.sub('[^a-zа-я]', '', value.lower())
-    if s in ['неенеобходима']:
+    if s in ['неенеобходима', 'няманужда']:
         return False
     return value
+
+
+def water_parser(value):
+    if unnecessary_false_parser(value) is False:
+        return False
+    match = re.match('^(?P<water>\d+([.,]\d+)?) ?(л(итра)?)?.?$', value)
+    if match is None:
+        return value
+    return parse_decimal(match.group('water'))
 
 
 def ascent_parser(v):
@@ -89,7 +96,7 @@ keys = {
     'продължителност': 'duration',
     'вода': 'water',
     'храна': 'food',
-    'терен': 'terrain',
+    'терен': 'terrains',
     'ниво на техническа трудност': 'difficulty',
     'физическо натоварване': 'strenuousness',
 }
@@ -98,9 +105,9 @@ parsers = {
     'length': length_parser,
     'ascent': ascent_parser,
     'duration': plaintext_parser,
-    'water': unnecessary_false_parser,
+    'water': water_parser,
     'food': unnecessary_false_parser,
-    'terrain': terrain_parser,
+    'terrains': terrain_parser,
     'difficulty': difficulty_parser,
     'strenuousness': strenuousness_parser,
 }
@@ -139,7 +146,7 @@ def parse_meta_parts(meta_parts):
     for k, v in meta_parts.items():
         if k in parsers:
             parsed_value = parsers[k](v)
-            if parsed_value:
+            if parsed_value is not None:
                 parsed_meta[k] = parsed_value
             else:
                 warnings.append(
@@ -185,14 +192,33 @@ def find_name(soup):
     return result
 
 
+def find_date(soup):
+    article_date = None
+    for date_elem in soup.find_all('span', attrs={'class': 'createdate'}):
+        if article_date is not None:
+            return None
+        locale.setlocale(locale.LC_TIME, 'bg_BG.UTF-8')
+        article_date = datetime.strptime(date_elem.get_text(strip=True), '%A, %d %B %Y %H:%M')
+    article_date.replace(tzinfo=timezone('Europe/Sofia'))
+    return article_date.isoformat()
+
+
 def parse_page(url, content, ignore_errors):
     if len(content) == 0:
         raise Exception('Empty HTML file!')
-    # print('Parsing', url)
     soup = BeautifulSoup(content)
+    route = {
+        'name': find_name(soup),
+        'date': find_date(soup),
+        'link': url,
+    }
+    if route['name'] is None:
+        return None, ['Error parsing {0}: name not found.'.format(url)]
+    if route['date'] is None:
+        return None, ['Error parsing {0}: date not found.'.format(url)]
     parse_results = find_metas(soup)
     trace_links = find_trace_links(soup)
-    parse_warnings = [result[1] for result in parse_results]
+    parse_warnings = [warning for result in parse_results for warning in result[1]]
     if len(trace_links) == 0:
         parse_warnings.append(
             'Error parsing {0}: no links.'.format(url, len(trace_links)))
@@ -202,11 +228,10 @@ def parse_page(url, content, ignore_errors):
             'Error parsing {0}; {1} metadata blocks found, must be exactly 1'.format(
                 url, len(parse_results)))
         return None, parse_warnings
-    parsed_meta = parse_results[0][0] if len(parse_results) else None
-    parsed_meta['name'] = find_name(soup)
-    parsed_meta['link'] = url
-    parsed_meta['traces'] = trace_links
-    return parsed_meta, parse_warnings
+    if len(parse_results):
+        route.update(parse_results[0][0])
+    route['traces'] = trace_links
+    return route, parse_warnings
 
 
 def read_routes():
@@ -214,46 +239,81 @@ def read_routes():
     return {r['link']: r for r in input_routes['routes']}
 
 
-def compare_routes(old_routes, new_routes):
-    old_links = set(old_routes.keys())
-    new_links = set(new_routes.keys())
+def write_routes(routes):
+    route_list = list(routes.values())
+    route_list.sort(key=lambda r: r['date'])
+    write_json(os.path.join(exec_root, '..', 'preprocessor', 'input.json'), route_list, {
+        'indent': '  ',
+        'item_sort_key': lambda i: print(i[0])
+    })
+
+
+def compare_routes(old_routes, new_routes, exceptions):
+    ignored_links = set(k for k, v in exceptions.items() if v == 'ignore')
+    old_links = set(old_routes.keys()) - ignored_links
+    new_links = set(new_routes.keys()) - ignored_links
     for link in new_links - old_links:
-        print('New route', link)
+        def action(routes):
+            routes[link] = new_routes[link]
+
+        yield ParseResultFix(link, ' - New route added', action)
     for link in old_links - new_links:
-        print('Deleted route', link)
+        def action(routes):
+            del routes[link]
+
+        yield ParseResultFix(link, ' - Route deleted', action)
     for link in old_links & new_links:
         old_route = old_routes[link]
         new_route = new_routes[link]
-        print('Matched route', link)
         old_route_keys = set(old_route.keys())
         new_route_keys = set(new_route.keys())
         for key in old_route_keys | new_route_keys:
             old_value = old_route.get(key)
             new_value = new_route.get(key)
             if old_value != new_value:
-                print(' - {0}: {1} != {2}'.format(key, old_value, new_value))
+                if new_value is None:
+                    def action(routes):
+                        del routes[link][key]
+                else:
+                    def action(routes):
+                        routes[link][key] = new_value
+                yield ParseResultFix(
+                    link, ' - {0}: {1} -> {2}'.format(key, old_value, new_value), action)
 
 
 def main():
-    pages_ignore = {}
+    pages_exceptions = {}
     online_routes = {}
     saved_routes = read_routes()
+    fixed_routes = copy.deepcopy(saved_routes)
+    write_routes(fixed_routes)
+    exit(0)
     with open(os.path.join(exec_root, 'pages_exceptions.txt')) as f:
         for line in f:
             parts = line.decode('utf-8').strip().split(': ', 2)
-            pages_ignore[parts[2]] = parts[1]
+            pages_exceptions[parts[2]] = parts[1]
     with open(os.path.join(exec_root, 'pages.txt')) as f:
         for rel_url in f:
             rel_url = rel_url.decode('utf-8').strip()
-            exception = pages_ignore.get(rel_url)
+            exception = pages_exceptions.get(rel_url)
             if exception == 'ignore':
                 continue
             url = u'http://mtb-bg.com' + rel_url.strip()
             content = download_page(url)
             route, warnings = parse_page(url, content, exception == 'include')
+            if exception != 'include' and warnings:
+                print('On route {0}:'.format(url))
+                for warning in warnings:
+                    print(' -', warning)
             if route is not None:
                 online_routes[url] = route
-    compare_routes(saved_routes, online_routes)
+    last_header = None
+    for fix in compare_routes(saved_routes, online_routes, pages_exceptions):
+        if fix.link != last_header:
+            print('On route', fix.link)
+            last_header = fix.link
+        if fix.interact_apply(fixed_routes):
+            write_routes(fixed_routes)
 
 
 if __name__ == '__main__':
