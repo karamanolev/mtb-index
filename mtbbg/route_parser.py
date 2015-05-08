@@ -192,13 +192,18 @@ def find_name(soup):
     return result
 
 
+def parse_date(value):
+    locale.setlocale(locale.LC_TIME, b'bg_BG.UTF-8')
+    date_str = value.lower().encode('utf-8')
+    return datetime.strptime(date_str, '%A, %d %B %Y %H:%M')
+
+
 def find_date(soup):
     article_date = None
     for date_elem in soup.find_all('span', attrs={'class': 'createdate'}):
         if article_date is not None:
             return None
-        locale.setlocale(locale.LC_TIME, 'bg_BG.UTF-8')
-        article_date = datetime.strptime(date_elem.get_text(strip=True), '%A, %d %B %Y %H:%M')
+        article_date = parse_date(date_elem.get_text(strip=True))
     article_date.replace(tzinfo=timezone('Europe/Sofia'))
     return article_date.isoformat()
 
@@ -236,35 +241,53 @@ def parse_page(url, content, ignore_errors):
 
 def read_routes():
     input_routes = read_json(os.path.join(exec_root, '..', 'preprocessor', 'input.json'))
-    return {r['link']: r for r in input_routes['routes']}
+    if len(set(r['name'] for r in input_routes['routes'])) != len(input_routes['routes']):
+        print('Duplicate route names in input.json. Can\'t process.')
+    return {r['name']: r for r in input_routes['routes']}
 
 
 def write_routes(routes):
     route_list = list(routes.values())
-    route_list.sort(key=lambda r: r['date'])
-    write_json(os.path.join(exec_root, '..', 'preprocessor', 'input.json'), route_list, {
+    route_list.sort(key=lambda r: (r['date'], r['name']))
+    data = {
+        'routes': route_list,
+    }
+    write_json(os.path.join(exec_root, '..', 'preprocessor', 'input.json'), data, {
         'indent': '  ',
-        'item_sort_key': lambda i: print(i[0])
+        'item_sort_key': lambda i: [
+            'name', 'date', 'link', 'terrain', 'length', 'ascent',
+            'difficulty', 'strenuousness', 'duration', 'water', 'food',
+            'terrains', 'traces', 'routes'].index(i[0]),
+        'ensure_ascii': False,
     })
 
 
 def compare_routes(old_routes, new_routes, exceptions):
     ignored_links = set(k for k, v in exceptions.items() if v == 'ignore')
-    old_links = set(old_routes.keys()) - ignored_links
-    new_links = set(new_routes.keys()) - ignored_links
-    for link in new_links - old_links:
-        def action(routes):
-            routes[link] = new_routes[link]
+    old_names = set(old_routes.keys())
+    new_names = set(new_routes.keys())
+    for name in new_names - old_names:
+        if new_routes[name]['link'] in ignored_links:
+            continue
 
-        yield ParseResultFix(link, ' - New route added', action)
-    for link in old_links - new_links:
         def action(routes):
-            del routes[link]
+            routes[name] = new_routes[name]
 
-        yield ParseResultFix(link, ' - Route deleted', action)
-    for link in old_links & new_links:
-        old_route = old_routes[link]
-        new_route = new_routes[link]
+        yield ParseResultFix(name, ' - New route added', action)
+    for name in old_names - new_names:
+        if old_routes[name]['link'] in ignored_links:
+            continue
+
+        def action(routes):
+            del routes[name]
+
+        yield ParseResultFix(name, ' - Route deleted', action)
+    for name in old_names & new_names:
+        if new_routes[name]['link'] in ignored_links:
+            continue
+
+        old_route = old_routes[name]
+        new_route = new_routes[name]
         old_route_keys = set(old_route.keys())
         new_route_keys = set(new_route.keys())
         for key in old_route_keys | new_route_keys:
@@ -273,12 +296,12 @@ def compare_routes(old_routes, new_routes, exceptions):
             if old_value != new_value:
                 if new_value is None:
                     def action(routes):
-                        del routes[link][key]
+                        del routes[name][key]
                 else:
                     def action(routes):
-                        routes[link][key] = new_value
+                        routes[name][key] = new_value
                 yield ParseResultFix(
-                    link, ' - {0}: {1} -> {2}'.format(key, old_value, new_value), action)
+                    name, ' - {0}: {1} -> {2}'.format(key, old_value, new_value), action)
 
 
 def main():
@@ -286,8 +309,7 @@ def main():
     online_routes = {}
     saved_routes = read_routes()
     fixed_routes = copy.deepcopy(saved_routes)
-    write_routes(fixed_routes)
-    exit(0)
+
     with open(os.path.join(exec_root, 'pages_exceptions.txt')) as f:
         for line in f:
             parts = line.decode('utf-8').strip().split(': ', 2)
@@ -306,12 +328,12 @@ def main():
                 for warning in warnings:
                     print(' -', warning)
             if route is not None:
-                online_routes[url] = route
+                online_routes[route['name']] = route
     last_header = None
     for fix in compare_routes(saved_routes, online_routes, pages_exceptions):
-        if fix.link != last_header:
-            print('On route', fix.link)
-            last_header = fix.link
+        if fix.route_name != last_header:
+            print('On route', fix.route_name)
+            last_header = fix.route_name
         if fix.interact_apply(fixed_routes):
             write_routes(fixed_routes)
 

@@ -1,11 +1,12 @@
+import io
 from itertools import chain
-import json
 import os
 from zipfile import ZipFile
+import requests
 
+import simplejson
 import gpxpy
 from polyline.codec import PolylineCodec
-import requests
 from shapely.geometry.linestring import LineString
 
 
@@ -14,14 +15,14 @@ exec_root = os.path.dirname(__file__)
 
 def read_json(path):
     with open(path, 'r') as f:
-        return json.loads(f.read())
+        return simplejson.loads(f.read(), use_decimal=True)
 
 
-def write_json(path, data):
-    with open(path, 'w') as f:
-        dumped = json.dumps(data)
-        print 'Writing {0} bytes of JSON'.format(len(dumped))
-        f.write(dumped)
+def write_json(path, data, dumps_params):
+    value = simplejson.dumps(data, **dumps_params)
+    with io.open(path, 'w', encoding='utf-8') as f:
+        f.write(value)
+    return len(value)
 
 
 def extract_segments_from_gpx(gpx):
@@ -86,9 +87,11 @@ def main():
     input_data = read_json(os.path.join(exec_root, 'input.json'))
     for route in input_data['routes']:
         result['routes'].append(process_route(route))
-    print 'Wrote {0} routes. {1} bytes per route.'.format(
-        len(result['routes']), len(json.dumps(result)) / len(result['routes']))
-    write_json(os.path.join(exec_root, '../web/routes.json'), result)
+    bytes = write_json(os.path.join(exec_root, '../web/routes.json'), result, {
+        'ensure_ascii': False,
+    })
+    print 'Wrote {0} routes. {1} bytes per route. {2} bytes total.'.format(
+        len(result['routes']), bytes / len(result['routes']), bytes)
 
 
 if __name__ == '__main__':

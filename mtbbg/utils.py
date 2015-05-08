@@ -1,5 +1,6 @@
 from __future__ import unicode_literals, print_function
 from decimal import Decimal
+import io
 
 import simplejson
 
@@ -11,8 +12,9 @@ def read_json(path):
 
 def write_json(path, data, dumps_params):
     value = simplejson.dumps(data, **dumps_params)
-    with open(path, 'w') as f:
+    with io.open(path, 'w', encoding='utf-8') as f:
         f.write(value)
+        return len(value)
 
 
 def parse_decimal(s):
@@ -20,8 +22,8 @@ def parse_decimal(s):
 
 
 class ParseResultFix(object):
-    def __init__(self, link, text, action):
-        self.link = link
+    def __init__(self, route_name, text, action):
+        self.route_name = route_name
         self.text = text
         self.action = action
 
