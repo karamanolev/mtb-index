@@ -82,8 +82,6 @@ class MetaTests(unittest.TestCase):
             }
         )
 
-        if __name__ == '__main__':
-            unittest.main()
 
     def test_parse_meta_parts(self):
         parse_results = route_parser.parse_meta_parts({
@@ -144,3 +142,6 @@ class MetaTests(unittest.TestCase):
             'link': 'demo',
             'traces': ['http://mtb-bg.com/test.gpx']
         })
+
+if __name__ == '__main__':
+    unittest.main()
