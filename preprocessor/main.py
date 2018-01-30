@@ -36,13 +36,14 @@ def extract_gpxes(cache_path):
         with open(cache_path) as f:
             yield gpxpy.parse(f)
     elif cache_path.lower().endswith('.zip'):
-        print('Opeining ZIP', cache_path)
+        print('Opening ZIP', cache_path)
         z = ZipFile(cache_path)
         for file_info in z.filelist:
             if file_info.filename.lower().endswith('.gpx'):
                 print('Parsing', cache_path + '/' + file_info.filename)
                 with z.open(file_info) as f:
-                    yield gpxpy.parse(f)
+                    xml = f.read().decode()
+                    yield gpxpy.parse(xml)
     else:
         raise Exception('Unsupported file type ' + cache_path)
 
@@ -75,7 +76,7 @@ def process_route(route):
     print('Route {0} got {1} polylines, {2} points total'.format(
         route['traces'][0], len(polylines), sum(len(p) for p in polylines)))
     codec = PolylineCodec()
-    result['polylines'] = map(codec.encode, polylines)
+    result['polylines'] = list(map(codec.encode, polylines))
     return result
 
 

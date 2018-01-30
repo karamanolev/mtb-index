@@ -259,7 +259,7 @@ def write_routes(routes):
         'item_sort_key': lambda i: [
             'name', 'date', 'link', 'terrain', 'length', 'ascent',
             'difficulty', 'strenuousness', 'duration', 'water', 'food',
-            'terrains', 'traces', 'routes'].index(i[0]),
+            'terrains', 'traces', 'routes', 'trailhead'].index(i[0]),
         'ensure_ascii': False,
     })
 

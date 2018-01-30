@@ -1,6 +1,237 @@
 {
   "routes": [
     {
+      "name": "Курорт Атолука - гр.Пещера",
+      "date": "2008-01-22T11:00:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1021-gpstrack0001-atoluka-peshtera",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/Atoluka-Peshtera.gpx"
+      ]
+    },
+    {
+      "name": "Бовски пущинак",
+      "date": "2008-01-22T12:14:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1022-gpstrack0002",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/Bov_pushtinak.gpx"
+      ]
+    },
+    {
+      "name": "ДДС Борово - Равногор - курорт Атолука",
+      "date": "2008-01-22T12:24:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1023-gpstrack0003",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/DDS%20Borovo-Ravnogor-Atoluka.gpx"
+      ]
+    },
+    {
+      "name": "Дреново",
+      "date": "2009-01-22T12:31:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1024-gpstrack0004-drenovo",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/Drenovo.gpx"
+      ]
+    },
+    {
+      "name": "с. Карлуково - с. Беленци - с. Стоянци - с. Кунино - Психиатрична болница \"Карлуково\"",
+      "date": "2009-01-22T12:38:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1025-gpstrack0005-karlukovo",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/Karlukovo-Belenci-Kunino-Bolnica.gpx"
+      ]
+    },
+    {
+      "name": "Нареченски бани - х.Пашалийца - х.Момчил юнак - Хайдушки поляни - х.Преспа - х.Свобода - Родопско конче - х.Аква тепе - Чотрова къща",
+      "date": "2009-01-22T12:41:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1026-gpstrack0006-rodopi",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/Narechen-Pashaliica-MomchilYunak-Prespa-Svoboda-Belentash.gpx"
+      ]
+    },
+    {
+      "name": "Пещерен дом\"Карлуково\"-с. Кунино-с. Реселец-Пещерен дом\"Карлуково\"",
+      "date": "2009-01-22T13:13:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1027-gpstrack0007-karlukovo",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/Peshteren_dom-Kunino-Reselec-Peshteren_dom.gpx"
+      ]
+    },
+    {
+      "name": "Урановият рудник над Сеславци",
+      "date": "2009-01-22T13:17:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1028-gpstrack0008-seslavci",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/Seslavci_Uranov_rudnik.gpx"
+      ]
+    },
+    {
+      "name": "Софийска планина (Кремиковци - Войняговци)",
+      "date": "2009-01-22T13:24:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1029-gpstrack0009-sofiiska-planina",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/old/Sofiiska%20planina%20%28Kremikovci-Voiniagovci%29.gpx"
+      ]
+    },
+    {
+      "name": "Локорско - Кремиковци - Локорско",
+      "date": "2010-05-21T00:53:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1087-gpstrack0010-lokorsko-kremikovci",
+      "length": 16.4,
+      "ascent": 500,
+      "duration": "3 - 3:30 ч (с по-бавно темпо и почивки).",
+      "water": "1,5 - 2 л",
+      "food": "По ваша преценка. Маршрутът е кратък и може да се направи дори за 2 часа, така че може да си спестите храната.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 2.4
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 12
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0010_Lokorsko.gpx"
+      ],
+      "trailhead": "с. Локорско"
+    },
+    {
+      "name": "Кремиковци - Сеславци",
+      "date": "2010-05-25T16:35:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1091-gpstrack0011-kremikovci-seslavci",
+      "length": 18.7,
+      "ascent": 800,
+      "duration": "3 - 3:30 ч (с по-бавно темпо и почивки).",
+      "water": "1,5 - 2 л",
+      "food": "По ваша преценка. Маршрутът е кратък и може да се направи дори за 2 часа, така че може да си спестите храната.",
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 10.3
+        },
+        {
+          "terrain": "пътеки",
+          "length": 8.4
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0011_Kremikovci-Seslavci.gpx"
+      ],
+      "trailhead": "кв. Кремиковци, Кремиковски манастир"
+    },
+    {
+      "name": "Влахина и Малешевска планина",
+      "date": "2010-05-30T13:14:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1124-gpstrack0012",
+      "length": 60,
+      "ascent": 2000,
+      "duration": "10-12 ч (с по-бавно темпо и почивки).",
+      "water": "3 л, по пътя има 2-3 чешми, но не разчитайте само на тях.",
+      "food": "За цял ден. По маршрута няма магазини и заведения за хранене.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 16
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 40.5
+        },
+        {
+          "terrain": "пътеки",
+          "length": 3.5
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0012_Maleshevska_Vlahina.gpx"
+      ],
+      "trailhead": "гр. Симитли"
+    },
+    {
+      "name": "Ястребец - Ситняково - Боровец",
+      "date": "2010-07-13T09:07:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1154-gpstrack0013",
+      "length": 17.2,
+      "duration": "3-4 ч (с по-бавно темпо и почивки).",
+      "water": "1-2 л, по пътя има 2-3 чешми, но не разчитайте само на тях.",
+      "food": "Може да вземете само сандвич или енергийна вафла, тъй като карането е кратко, а и в района на Ястребец и в хижа \"Мусала\" се предлага храна.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 1.8
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 6.3
+        },
+        {
+          "terrain": "пътеки",
+          "length": 9.1
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0013_Sitnqkovo.gpx"
+      ],
+      "trailhead": "вр.Ястребец, горна станция на кабинковия лифт"
+    },
+    {
+      "name": "Кремиковци - Ябланица",
+      "date": "2010-10-28T21:03:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1217-gpstrack0014",
+      "length": 40.30,
+      "ascent": 1250,
+      "duration": "от 4 ч (с бързо темпо) до 8 часа (с повече почивки и по-бавно темпо).",
+      "water": 3,
+      "food": "за цял ден",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 2.0
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 30.7
+        },
+        {
+          "terrain": "пътеки",
+          "length": 7.6
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0014_Kremikovci-Yablanica.gpx"
+      ],
+      "trailhead": "Кремиковски манастир"
+    },
+    {
+      "name": "Локорско - Войняговци",
+      "date": "2010-11-19T17:32:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1230-gpstrack0015-lokorsko-voinegovci",
+      "length": 12.5,
+      "ascent": 450,
+      "duration": "2 ч (с по-бавно темпо и почивки).",
+      "water": 1,
+      "food": false,
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 2.7
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 8.2
+        },
+        {
+          "terrain": "пътеки",
+          "length": 1.6
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0015_Lokorsko-Voinegovci.gpx"
+      ],
+      "trailhead": "с. Локорско"
+    },
+    {
       "name": "Редина",
       "date": "2010-11-20T16:06:00",
       "link": "http://mtb-bg.com/index.php/trails/gpstracks/1231-gpstrack0016-redina",
@@ -52,7 +283,8 @@
       ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0017_Seslavci.gpx"
-      ]
+      ],
+      "trailhead": "с. Сеславци, площада"
     },
     {
       "name": "Горна Брезница",
@@ -156,7 +388,8 @@
       ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0021_Govedarci.gpx"
-      ]
+      ],
+      "trailhead": "с.Говедарци, централен площад"
     },
     {
       "name": "Габрово - х. \"Партизанска песен\" (местност Узана) - х. \"Мазалат\" - с. Батошево",
@@ -198,7 +431,8 @@
       "food": "за цял ден; може да се намери и по хижите",
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0024.zip"
-      ]
+      ],
+      "trailhead": "с. Кърнаре"
     },
     {
       "name": "Кремиковци - Ябланица 2",
@@ -320,6 +554,14 @@
       ]
     },
     {
+      "name": "Клисура - вр. Богдан - х. Чивира - х. Средногорец - Клисура",
+      "date": "2012-09-27T17:31:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/1884-gpstrack0030-klisura",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0030_Klisura-Bogdan-Srednogorec-Klisura.zip"
+      ]
+    },
+    {
       "name": "Йовчови кошари - GPS следа - октомври 2012 г.",
       "date": "2012-10-02T14:43:00",
       "link": "http://mtb-bg.com/index.php/trails/gpstracks/1888-gpstrack0031-iovchovi-koshari",
@@ -416,7 +658,8 @@
       ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0033_Klisura-Koprivshtica.zip"
-      ]
+      ],
+      "trailhead": "гр. Клисура, черквата \"Успение Богородично\"."
     },
     {
       "name": "Ресилово - хижа \"Отовица\"",
@@ -622,7 +865,8 @@
       ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0039_Krupnik.zip"
-      ]
+      ],
+      "trailhead": "с. Крупник, централен площад"
     },
     {
       "name": "Кресна и Горна Брезница за напреднали",
@@ -753,6 +997,14 @@
       ]
     },
     {
+      "name": "Вр. Ташмандра - Сапарева баня (през Черната скала) - още едно парче от пъзела",
+      "date": "2013-11-08T11:07:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2519-gpstrack0046-tashmandra-sapareva-banq",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/gpstrack0046_Tashmandra_2.zip"
+      ]
+    },
+    {
       "name": "Волно-Баскалци - липсващото звено",
       "date": "2013-12-19T07:14:00",
       "link": "http://mtb-bg.com/index.php/trails/gpstracks/2570-gpstrack0047-volno-baskaltsi",
@@ -879,10 +1131,31 @@
       ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_gorna-breznitsa-2.zip"
-      ]
+      ],
+      "trailhead": "с. Горна Брезница"
     },
     {
-      "name": "Кресна - Горна Брезница 1",
+      "name": "Горна Брезница 3",
+      "date": "2014-01-30T07:09:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2613-gpstrack-2014-gorna-breznitsa-3",
+      "length": 23.1,
+      "ascent": 930,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T4"
+      ],
+      "strenuousness": 6,
+      "duration": "2-3 часа с по-бързо темпо, 3-5 часа с по-бавно",
+      "water": "2 л, в Горна Брезница има чешми",
+      "food": "За половин ден или цял ден в зависимост от темпото и часа на тръгване.",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_gorna-breznitsa-3.zip"
+      ],
+      "trailhead": "с. Горна Брезница"
+    },
+    {
+      "name": "Кресна-Горна Брезница 1",
       "date": "2014-02-05T18:09:00",
       "link": "http://mtb-bg.com/index.php/trails/gpstracks/2612-gpstrack-2014-kresna-gorna-breznitsa-1",
       "length": 25.9,
@@ -901,7 +1174,7 @@
       "terrains": [
         {
           "terrain": "асфалт",
-          "length": 6
+          "length": 6.0
         },
         {
           "terrain": "черни пътища",
@@ -914,7 +1187,8 @@
       ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_kresna-gorna-breznitsa-1.zip"
-      ]
+      ],
+      "trailhead": "гр. Кресна, при първите заведения за хранене, като се идва от София"
     },
     {
       "name": "Кресна - Горна Брезница 2",
@@ -976,6 +1250,14 @@
       ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_poganovski-manastir.zip"
+      ]
+    },
+    {
+      "name": "Маркирани ХС маршрути в ПП Витоша",
+      "date": "2014-03-21T08:46:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/2701-gpstrack-2014-vitosha-routes-all",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_all.zip"
       ]
     },
     {
@@ -1320,7 +1602,8 @@
       ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_polena-komatinski-skali.zip"
-      ]
+      ],
+      "trailhead": "с. Полена"
     },
     {
       "name": "Фалковец - Чупрене - хижа \"Горски рай\" - Репляна",
@@ -1393,9 +1676,20 @@
       "duration": "1 час с по-бързо темпо, 2-3 часа с по-бавно темпо и почивки",
       "water": 0.5,
       "food": false,
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 3.7
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 13.0
+        }
+      ],
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_shiroka-polqna.zip"
-      ]
+      ],
+      "trailhead": "м. Широка поляна"
     },
     {
       "name": "Бакьово - Огоя",
@@ -1445,12 +1739,13 @@
         "T3"
       ],
       "strenuousness": 4,
-      "duration": "1-2 часа, не повече от 3 часа при бавно каране и дълги почивки",
-      "water": " 1-1.5 л, по маршрута няма чешми",
+      "duration": "1-2 часа, не повече от 3 часа при бавно каране и дълги почивки.",
+      "water": "1-1.5 л, по маршрута няма чешми",
       "food": "Не е необходима, освен ако не държите да похапнете на тиферич на някоя поляна или при заслона.",
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/2014/gpstrack-2014_vitosha-routes/gpstrack-2014_vitosha-routes_6_chuipetliovo2.zip"
-      ]
+      ],
+      "trailhead": "с. Чуйпетльово, иформационното табло за маркираните веломаршрути в ПП Витоша"
     },
     {
       "name": "Маркирани ХС маршрути в ПП Витоша - Ярлово",
@@ -1620,6 +1915,594 @@
       "traces": [
         "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_brejani.zip"
       ]
+    },
+    {
+      "name": "Драгоман - Трън",
+      "date": "2015-06-10T10:03:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3455-gpstrack-2015-dragoman-tran",
+      "length": 48.0,
+      "ascent": 1200,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "strenuousness": 7,
+      "duration": "3-4 часа с по-бързо темпо, 5-10 часа с по-бавно темпо, почивки и разглеждане на забележителности",
+      "water": "3 литра, в някои от селата има чешми, но по-добре разчитайте на собствени запаси",
+      "food": "За цял ден (освен ако не сте сигурни, че ще го направите за половин)",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 27.8
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 19.7
+        },
+        {
+          "terrain": "пътеки",
+          "length": 0.5
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_dragoman-tran.zip"
+      ],
+      "trailhead": "гр. Драгоман, централен площад, ул. \"Александър Стамболийски\""
+    },
+    {
+      "name": "Обиколка на яз. Голям Беглик",
+      "date": "2015-08-13T06:09:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3596-gpstrack-2015-beglika-tour",
+      "length": 25.2,
+      "difficulty": [
+        "R1",
+        "R2"
+      ],
+      "strenuousness": 3,
+      "duration": "1-2 часа с бързо темпо, 3-4 часа с по-бавно темпо, почивки и разглеждане",
+      "water": "0.5-1.0 литра, по маршрута има няколко чешми",
+      "food": "Не е необходима, освен ако не дължите да хапнете на някоя поляна край брега",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 5.9
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 19.3
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_beglika-tour.zip"
+      ],
+      "trailhead": "Стената на яз. Голям Беглик"
+    },
+    {
+      "name": "Ивайловград - крепост Лютица - с. Свирачи",
+      "date": "2015-09-09T09:14:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3298-gpstrack-2015-ivailovgrad-lyutitsa-svirachi",
+      "length": 25.2,
+      "ascent": 630,
+      "difficulty": [
+        "R1",
+        "R2"
+      ],
+      "strenuousness": 5,
+      "duration": "2-3 часа с по-бързо темпо, 4-8 часа с по-бавно темпо и почивки",
+      "water": 2,
+      "food": "За половин ден",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 9.3
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 15.9
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_ivailovgrad-lyutitsa-svirachi.zip"
+      ],
+      "trailhead": "Ивайловград, площада в кв. Лъджа"
+    },
+    {
+      "name": "Мандрица - Костилково",
+      "date": "2015-09-14T15:42:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3299-gpstrack-2015-mandritsa-kostilkovo",
+      "length": 29.1,
+      "ascent": 450,
+      "difficulty": [
+        "R1",
+        "R2"
+      ],
+      "strenuousness": 4,
+      "duration": "2-3 часа с по-бързо темпо, 4-6 часа с по-бавно темпо и почивки",
+      "water": 2,
+      "food": "За половин ден",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 10.3
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 18.8
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_mandritsa-kostilkovo.zip"
+      ],
+      "trailhead": "с. Мандрица"
+    },
+    {
+      "name": "Лакатишка Рила 2",
+      "date": "2015-10-16T13:48:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3693-gpstrack-2015-lakatishka-rila",
+      "length": 32.3,
+      "ascent": 1100,
+      "difficulty": [
+        "R1",
+        "R2",
+        "R3",
+        "T4"
+      ],
+      "strenuousness": 7,
+      "duration": "2-3 часа с бързо темпо, 4-7 часа с по-бавно темпо и почивки",
+      "water": "3 литра, има 1-2 чешми по билото",
+      "food": "За половин или цял ден в зависимост от темпото",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 9.4
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 21.0
+        },
+        {
+          "terrain": "пътеки",
+          "length": 1.9
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_lakatishka-rila-2.zip"
+      ],
+      "trailhead": "с. Говедарци, семеен хотел \"Искър\""
+    },
+    {
+      "name": "Кресна - Загаза - Влахи - Кресна",
+      "date": "2015-12-01T14:37:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3767-gpstrack-2015-kresna-zagaza-vlahi-kresna",
+      "length": 49.0,
+      "ascent": 1500,
+      "difficulty": [
+        "R1",
+        "R2",
+        "R3",
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "strenuousness": 8,
+      "duration": "4-6 часа с бързо темпо, 6-10 часа с по-бавно темпо и почивки",
+      "water": 3,
+      "food": "За цял ден",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_kresna-zagaza-vlahi.zip"
+      ],
+      "trailhead": "с. Кресна"
+    },
+    {
+      "name": "Стобските пирамиди",
+      "date": "2015-12-14T15:59:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3783-gpstrack-2015-stobski-piramidi",
+      "difficulty": [
+        "R1",
+        "R2",
+        "R3",
+        "T3",
+        "T4",
+        "T5"
+      ],
+      "strenuousness": 7,
+      "duration": "1-2 часа с бързо темпо, 3-5 часа с по-бавно темпо и почивки",
+      "water": "2 литра, по пътя няма чешми",
+      "food": "За половин или цял ден в зависимост от темпото Терен (само за основния маршрут): - асфалт - 0.2 км - черни пътища - 13.9 км - пътеки - 3.0 км",
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_stobski-piramidi.zip"
+      ],
+      "trailhead": "с. Стоб, паркинга под Стобските пирамиди"
+    },
+    {
+      "name": "Кътина - Владо Тричков",
+      "date": "2015-12-17T15:01:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3789-gpstrack-2015-katina-vlado-trichkov",
+      "length": 18.6,
+      "ascent": 900,
+      "difficulty": [
+        "R1",
+        "R2",
+        "R3",
+        "T3",
+        "T4"
+      ],
+      "strenuousness": 7,
+      "duration": "2-3 часа с бързо темпо, 3-6 часа с по-бавно темпо и почивки",
+      "water": "2 литра, във Владо Тричков може да се намери/купи вода",
+      "food": "За половин или цял ден в зависимост от темпото",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 2.8
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 11.6
+        },
+        {
+          "terrain": "пътеки",
+          "length": 4.2
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2015/gpstrack-2015_katina-vlado-trichkov.zip"
+      ],
+      "trailhead": "с. Кътина, централен площад"
+    },
+    {
+      "name": "Понор планина",
+      "date": "2016-03-30T14:52:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/3994-gpstrack-2016-ponor",
+      "length": 39.4,
+      "ascent": 1200,
+      "difficulty": [
+        "R1",
+        "R2"
+      ],
+      "strenuousness": 7,
+      "duration": "3-4 часа с бързо темпо, 5-8 часа с по-бавно темпо и почивки",
+      "water": "2-3 литра, при хижа \"Пробойница\" има чешма, нагоре вече не",
+      "food": "За цял ден",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 16.0
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 23.4
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_ponor-planina.zip"
+      ],
+      "trailhead": "с. Гара лакатник, паркинга под Лакатишките скали"
+    },
+    {
+      "name": "Гара Лакатник - Миланово - Дружево",
+      "date": "2016-06-11T17:19:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4074-gpstrack-2016-lakatnik-milanovo-drujevo",
+      "length": 26.3,
+      "ascent": 760,
+      "difficulty": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "strenuousness": 6,
+      "duration": "2-3 часа с бързо темпо, 4-6 часа с по-бавно темпо и почивки",
+      "water": "1-2 литра, при Миланово и в с. Дружево има чешми",
+      "food": "За половин или цял ден според темпото",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 18.1
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 8.2
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_lakatnik-milanovo-drujevo.zip"
+      ],
+      "trailhead": "с. Гара Лакатник, паркинга под Лакатишките скали"
+    },
+    {
+      "name": "Ковачевица - Огняново - Скребатно",
+      "date": "2016-08-31T17:17:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4340-gpstrack-2016-kovachevitsa-ognqnovo-skrebatno",
+      "length": 26.4,
+      "ascent": 780,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3",
+        "T4"
+      ],
+      "strenuousness": 6,
+      "duration": "2-3 часа с бързо темпо, 4-6 часа с по-бавно темпо и почивки",
+      "water": "2-3 литра, в Скребатно може да се купи",
+      "food": "За половин или цял ден според темпото",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 13.7
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 5.2
+        },
+        {
+          "terrain": "пътеки",
+          "length": 7.5
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_kovachevitsa-ognqnovo-skrebatno.zip"
+      ],
+      "trailhead": "с. Ковачевица, централен площад"
+    },
+    {
+      "name": "24-часов маратон по планинско колоездене 2016 - GPS следа - с. Мътеница",
+      "date": "2016-10-19T12:43:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4459-gpstrack-2016-matenitsa-24hour",
+      "length": 10.5,
+      "ascent": 300,
+      "difficulty": [
+        "R2",
+        "T2",
+        "T3"
+      ],
+      "strenuousness": 4,
+      "duration": "30-40 минути с бързо темпо, 1-2 часа с по-бавно темпо и почивки",
+      "water": "0.5-1 литър в зависимост от сезона; по маршрута няма вода",
+      "food": false,
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 5.66
+        },
+        {
+          "terrain": "пътеки",
+          "length": 4.84
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_matenitsa-24hour.zip"
+      ],
+      "trailhead": "с. Мътеница"
+    },
+    {
+      "name": "Ковачевица - Сухия чарк - Гърмадско дере",
+      "date": "2016-11-02T06:41:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4536-gpstrack-2016-kovachevitsa-suhia-chark-garmadsko-dere",
+      "length": 18.5,
+      "ascent": 650,
+      "difficulty": [
+        "R1",
+        "R2",
+        "R3",
+        "T3"
+      ],
+      "strenuousness": 5,
+      "duration": "2-3 часа с бързо темпо, 3-5 часа с по-бавно темпо и почивки",
+      "water": "1.5 - 2 литра, по пътя няма чешми",
+      "food": "За половин ден",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 7.0
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 10.7
+        },
+        {
+          "terrain": "пътеки",
+          "length": 0.8
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_kovachevitsa-suhia-chark-garmadsko-dere.zip"
+      ],
+      "trailhead": "с. Ковачевица, хотел \"Бялата къща\""
+    },
+    {
+      "name": "Ковачевица - Сухия чарк - параклис \"Св.Георги\"",
+      "date": "2016-11-06T18:01:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4537-gpstrack-2016-kovachevitsa-suhia-chark-paraklis",
+      "length": 17.9,
+      "ascent": 670,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3"
+      ],
+      "strenuousness": 5,
+      "duration": "2-3 часа с бързо темпо, 3-4 часа с по-бавно темпо и почивки",
+      "water": "1.5 - 2 литра, по пътя няма чешми",
+      "food": "За половин ден",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 6.0
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 9.9
+        },
+        {
+          "terrain": "пътеки",
+          "length": 2.0
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_kovachevitsa-suhia-chark-paraklis.zip"
+      ],
+      "trailhead": "с. Ковачевица, хотел \"Бялата къща\""
+    },
+    {
+      "name": "Гоце Делчев | Трасе за спускане и ендуро",
+      "date": "2016-11-08T11:48:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4551-gpstrack-2016-gotse-delchev-track",
+      "difficulty": [
+        "T4"
+      ],
+      "duration": "Ако сте на самоход, изкачването отнема не повече от час. Спускането е според уменията и куража.",
+      "water": "0.5-1.5 л в зависимост от сезона; по трасето няма вода",
+      "food": false,
+      "terrains": [
+        {
+          "terrain": "черни пътища",
+          "length": 0.6
+        },
+        {
+          "terrain": "пътеки",
+          "length": 1.9
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_gotse-delchev-track.zip"
+      ],
+      "trailhead": "Пътя за с. Делчево, на 1 км преди селото."
+    },
+    {
+      "name": "Гоце Делчев | Попови ливади - с. Делчево",
+      "date": "2016-11-15T09:12:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4552-gpstrack-2016-popovi-livadi-delchevo",
+      "difficulty": [
+        "R1",
+        "R2",
+        "T4"
+      ],
+      "duration": "1-2 часа в зависимост от почивките и спиранията",
+      "water": "0.5-1.5 л в зависимост от сезона; по маршрута няма вода",
+      "food": "Не е необходима, освен ако не се изкачвате на самоход",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 1.7
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 4.0
+        },
+        {
+          "terrain": "пътеки",
+          "length": 2.3
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_popovi-livadi-delchevo.zip"
+      ],
+      "trailhead": "м. Попови ливади."
+    },
+    {
+      "name": "Герман - Германски манастир - Ловната хижа",
+      "date": "2016-11-28T19:47:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4613-gpstrack-2016-german-manastir-lovna-hija",
+      "length": 19.0,
+      "ascent": 650,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3"
+      ],
+      "strenuousness": 5,
+      "duration": "2-3 часа с бързо темпо, 3-5 часа с по-бавно темпо и почивки",
+      "water": "1 - 2 литра, чешми има в с. Герман, в двора на Германския манастир и при Ловната хижа.",
+      "food": "В зависимост от темпото.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 9.1
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 4.8
+        },
+        {
+          "terrain": "пътеки",
+          "length": 5.1
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_german-manastir-lovna-hija.zip"
+      ],
+      "trailhead": "с. Кокаляне, паркинга от източната страна на яз. Панчарево, до ВЕЦ \"Кокаляне\""
+    },
+    {
+      "name": "Дебращица - Костина Могила",
+      "date": "2016-12-06T17:05:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4617-gpstrack-2016-debrashtitsa-kostina-mogila",
+      "length": 33.5,
+      "ascent": 1180,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T4"
+      ],
+      "strenuousness": 7,
+      "duration": "3-4 часа с бързо темпо, 4-7 часа с по-бавно темпо и почивки",
+      "water": "2 литра, по пътя има чешми, но са в горната част, преди \"Св. Константин\"",
+      "food": "За половин ден или цял ден според темпото. В Св. Константин има заведения за хранене.",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 22.9
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 5.1
+        },
+        {
+          "terrain": "пътеки",
+          "length": 5.5
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_debrashtitsa-kostina-mogila.zip"
+      ],
+      "trailhead": "с. Дебращица, централен площад"
+    },
+    {
+      "name": "Копрен - Чипровци",
+      "date": "2016-12-08T19:22:00",
+      "link": "http://mtb-bg.com/index.php/trails/gpstracks/4627-gpstrack-2016-kopren-chiprovtsi",
+      "length": 19.5,
+      "ascent": 650,
+      "difficulty": [
+        "R1",
+        "R2",
+        "T3"
+      ],
+      "strenuousness": 5,
+      "duration": "1-2 часа с бързо темпо, 3-5 часа с по-бавно темпо и почивки",
+      "water": "2 литра, по пътя няма чешми",
+      "food": "За половин ден (по собствена преценка в зависимост от часа на тръгване и темпото)",
+      "terrains": [
+        {
+          "terrain": "асфалт",
+          "length": 2.7
+        },
+        {
+          "terrain": "черни пътища",
+          "length": 13.1
+        },
+        {
+          "terrain": "пътеки",
+          "length": 3.7
+        }
+      ],
+      "traces": [
+        "http://mtb-bg.com/images/stories/trails_GPStrack/2016/gpstrack-2016_kopren-chiprovtsi.zip"
+      ],
+      "trailhead": "м. Копрен"
     }
   ]
 }
