@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function
-from collections import defaultdict
+
 import copy
 import locale
 import os
-from pytz import timezone
 import re
-from bs4 import BeautifulSoup
-import requests
+from collections import defaultdict
 from datetime import datetime
 
-from utils import parse_decimal, ParseResultFix, write_json, read_json
+import requests
+from bs4 import BeautifulSoup
+from pytz import timezone
+
+from utils import parse_decimal, ParseResultFix, write_json, read_json, BS4_PARSER
 
 
 def plaintext_parser(v):
@@ -119,12 +121,12 @@ def download_page(url):
                         os.path.basename(url) + '.html')
     if os.path.exists(dest):
         with open(dest, 'r') as f:
-            return f.read().decode('utf-8')
+            return f.read()
     print('Downloading', url)
     with open(dest, 'w') as f:
         page = requests.get(url)
         page.raise_for_status()
-        f.write(page.text.encode('utf-8'))
+        f.write(page.text)
     return download_page(url)
 
 
@@ -193,8 +195,8 @@ def find_name(soup):
 
 
 def parse_date(value):
-    locale.setlocale(locale.LC_TIME, b'bg_BG.UTF-8')
-    date_str = value.lower().encode('utf-8')
+    locale.setlocale(locale.LC_TIME, 'bg_BG.UTF-8')
+    date_str = value.lower()
     return datetime.strptime(date_str, '%A, %d %B %Y %H:%M')
 
 
@@ -210,8 +212,8 @@ def find_date(soup):
 
 def parse_page(url, content, ignore_errors):
     if len(content) == 0:
-        raise Exception('Empty HTML file!')
-    soup = BeautifulSoup(content)
+        raise Exception('Empty HTML file: {}!'.format(url))
+    soup = BeautifulSoup(content, BS4_PARSER)
     route = {
         'name': find_name(soup),
         'date': find_date(soup),
@@ -312,11 +314,11 @@ def main():
 
     with open(os.path.join(exec_root, 'pages_exceptions.txt')) as f:
         for line in f:
-            parts = line.decode('utf-8').strip().split(': ', 2)
+            parts = line.strip().split(': ', 2)
             pages_exceptions[parts[2]] = parts[1]
     with open(os.path.join(exec_root, 'pages.txt')) as f:
         for rel_url in f:
-            rel_url = rel_url.decode('utf-8').strip()
+            rel_url = rel_url.strip()
             exception = pages_exceptions.get(rel_url)
             if exception == 'ignore':
                 continue

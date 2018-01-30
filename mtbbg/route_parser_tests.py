@@ -5,6 +5,7 @@ import unittest
 from bs4 import BeautifulSoup
 
 import route_parser
+from utils import BS4_PARSER
 
 
 class ParserTests(unittest.TestCase):
@@ -98,7 +99,10 @@ class MetaTests(unittest.TestCase):
         self.assertEqual(len(parse_results[1]), 2)
 
     def test_find_metas(self):
-        soup = BeautifulSoup('<p><b>Изходна точка: </b>Перперикон <b>Дължина</b> 13km</p>')
+        soup = BeautifulSoup(
+            '<p><b>Изходна точка: </b>Перперикон <b>Дължина</b> 13km</p>',
+            BS4_PARSER,
+        )
         self.assertEqual(
             route_parser.find_metas(soup),
             [({'trailhead': 'Перперикон', 'length': Decimal(13)}, [])]
@@ -108,28 +112,30 @@ class MetaTests(unittest.TestCase):
         soup = BeautifulSoup(
             '<a href="/test.bin">hello world</a>' +
             '<a href="/test.gpx">точки нарязани до 500 за стари гармини</a>' +
-            '<a href="/test.gpx">GPX следа</a>')
+            '<a href="/test.gpx">GPX следа</a>',
+            BS4_PARSER,
+        )
         self.assertEqual(route_parser.find_trace_links(soup), ['http://mtb-bg.com/test.gpx'])
-
 
     def test_parse_empty_page(self):
         with self.assertRaises(Exception):
             route_parser.parse_page('demo', '', False)
 
-
     def test_find_name(self):
         soup = BeautifulSoup(
             'blah <a href="balsha-katina" class="contentpagetitle">' +
-            'Балша - Кътина</a> blah')
+            'Балша - Кътина</a> blah',
+            BS4_PARSER,
+        )
         self.assertEqual(route_parser.find_name(soup), 'Балша - Кътина')
 
     def test_parse_page(self):
         content = (
-            '<a class="contentpagetitle"> Заглавие </a>' +
-            '<p><b>Изходна точка: </b>Перперикон <b>Дължина</b> 13km</p>' +
-            '<a href="/test.bin">hello world</a>' +
-            '<a href="/test.gpx">точки нарязани до 500 за стари гармини</a>' +
-            '<a href="/test.gpx">GPX следа</a>')
+                '<a class="contentpagetitle"> Заглавие </a>' +
+                '<p><b>Изходна точка: </b>Перперикон <b>Дължина</b> 13km</p>' +
+                '<a href="/test.bin">hello world</a>' +
+                '<a href="/test.gpx">точки нарязани до 500 за стари гармини</a>' +
+                '<a href="/test.gpx">GPX следа</a>')
         parse_results = route_parser.parse_page('demo', content, False)
         self.assertEqual(parse_results[0], {
             'name': 'Заглавие',

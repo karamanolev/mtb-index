@@ -1,9 +1,11 @@
 from __future__ import unicode_literals, print_function
-from decimal import Decimal
+
 import io
+from decimal import Decimal
 
 import simplejson
 
+BS4_PARSER = 'html5lib'
 
 def read_json(path):
     with open(path, 'r') as f:
@@ -30,7 +32,7 @@ class ParseResultFix(object):
     def interact(self):
         print(self.text)
         while True:
-            result = raw_input('Apply (y/n): ')
+            result = input('Apply (y/n): ')
             if result == 'y':
                 return True
             elif result == 'n':
